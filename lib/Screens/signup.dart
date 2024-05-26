@@ -103,9 +103,9 @@ class _SignUpState extends State<SignUp> {
     }
   }
 
-  // Future<void> clearData() async {
-  //   await SharedPrefService.pref!.remove("sign-up");
-  // }
+  Future<void> clearData() async {
+    await SharedPrefService.pref!.remove("sign-up");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -270,6 +270,7 @@ class _SignUpState extends State<SignUp> {
                                       onPressed: () {
                                         setState(() {
                                           _showPass = !_showPass;
+                                          // clearData();
                                         });
                                       },
                                       icon: Icon(Icons.remove_red_eye)),
@@ -336,7 +337,6 @@ class _SignUpState extends State<SignUp> {
                                         SnackBar(
                                             content: Text(
                                                 "username already  exists")));
-                                    // clearData();
                                   } else {
                                     setState(() {
                                       _showLoader = true;

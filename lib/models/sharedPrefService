@@ -1,31 +1,27 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPrefService {
-  static SharedPreferences? _pref;
+  static SharedPreferences? pref;
 
   static Future<void> init() async {
-    _pref = await SharedPreferences.getInstance();
+    pref = await SharedPreferences.getInstance();
   }
 
-  static Future<void> setString({required String key, required String value}) async {
-    if (_pref == null) {
-      await init();
-    }
-    await _pref?.setString(key, value);
+  static void setString({required String key, required dynamic value}) {
+    pref?.setString(key, value);
   }
 
   static String? getString({required String key}) {
-    return _pref?.getString(key);
+    return pref?.getString(key);
   }
 
-  // static Future<void> clearDataForKey(String key) async {
-  //   if (_pref == null) {
-  //     await init();
-  //   }
-  //   await _pref?.remove(key);
-  // }
+  
 
-  // static Future<void> clearSignUpData() async {
-  //   await clearDataForKey("sign-up");
-  // }
+  static Future<void> clearDataForKey(String key) async {
+    await pref?.remove(key);
+  }
+
+  static Future<void> clearSignUpData() async {
+    await clearDataForKey("sign-up");
+  }
 }
