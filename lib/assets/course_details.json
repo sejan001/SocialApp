@@ -1,0 +1,342 @@
+[
+    {
+      "Id": 1,
+      "Title": "Computer Science",
+      "subTitle": "Fundamentals of CS",
+      "Description": "Explore the core concepts of computer science.",
+      "Overview": "This course covers the basics of computer science, including algorithms, data structures, and software development principles.",
+      "Instructor": [
+        {
+          "instructor_id": 101,
+          "Image": "https://storage-prtl-co.imgix.net/endor/articles/434/images/1663928047_shutterstock_2083362643.jpg?w=660&h=440&auto=format,compress&q=40"
+        }
+      ],
+      "Price": 99.99,
+      "Skills": ["Programming", "Algorithms"],
+      "Is_top_course": true,
+      "Is_recently_viewed_course": false,
+      "Syllabus": [
+        {
+          "Id": 1,
+          "Title": "Introduction to Programming",
+          "Summary": "Learn the basics of programming languages.",
+          "Total content": 10,
+          "Hours to completed": 5.0
+        }
+      ],
+      "FAQ": [
+        {
+          "Id": 1,
+          "Title": "What is Computer Science?",
+          "Subtitle": "Understanding the field of study.",
+          "Description": "Computer Science is the study of computers and computational systems."
+        }
+      ]
+    },
+    {
+      "Id": 2,
+      "Title": "Data Science",
+      "subTitle": "Mastering Data Science Techniques",
+      "Description": "An in-depth exploration of data science techniques.",
+      "Overview": "This course dives into data analysis, machine learning, and big data processing.",
+      "Instructor": [
+        {
+          "instructor_id": 102,
+          "Image": "https://imageio.forbes.com/specials-images/imageserve/615a844b0e678d9d11c5fc26/0x0.jpg?format=jpg&height=900&width=1600&fit=bounds"
+        }
+      ],
+      "Price": 149.99,
+      "Skills": ["Statistics", "Python", "SQL"],
+      "Is_top_course": false,
+      "Is_recently_viewed_course": true,
+      "Syllabus": [
+        {
+          "Id": 2,
+          "Title": "Introduction to SQL",
+          "Summary": "Learn how to query databases using SQL.",
+          "Total content": 8,
+          "Hours to completed": 4.0
+        }
+      ],
+      "FAQ": [
+        {
+          "Id": 2,
+          "Title": "What is Data Science?",
+          "Subtitle": "Exploring the intersection of statistics and computing.",
+          "Description": "Data Science involves extracting insights from structured and unstructured data."
+        }
+      ]
+    },
+    {
+      "Id": 3,
+      "Title": "Web Development",
+      "subTitle": "Building Web Applications",
+      "Description": "Learn to develop web applications from scratch.",
+      "Overview": "This course covers HTML, CSS, JavaScript, and frameworks like React.",
+      "Instructor": [
+        {
+          "instructor_id": 103,
+          "Image": "https://example.com/instructor3.jpg"
+        }
+      ],
+      "Price": 89.99,
+      "Skills": ["HTML", "CSS", "JavaScript", "React"],
+      "Is_top_course": true,
+      "Is_recently_viewed_course": false,
+      "Syllabus": [
+        {
+          "Id": 3,
+          "Title": "Introduction to HTML",
+          "Summary": "Learn the basics of HTML.",
+          "Total content": 6,
+          "Hours to completed": 3.0
+        }
+      ],
+      "FAQ": [
+        {
+          "Id": 3,
+          "Title": "What is Web Development?",
+          "Subtitle": "The process of building websites.",
+          "Description": "Web Development involves designing and coding websites."
+        }
+      ]
+    },
+    {
+      "Id": 4,
+      "Title": "Mobile App Development",
+      "subTitle": "Developing Mobile Apps",
+      "Description": "Learn to develop mobile apps for iOS and Android.",
+      "Overview": "This course covers Swift for iOS and Kotlin for Android.",
+      "Instructor": [
+        {
+          "instructor_id": 104,
+          "Image": "https://example.com/instructor4.jpg"
+        }
+      ],
+      "Price": 129.99,
+      "Skills": ["Swift", "Kotlin", "Xcode", "Android Studio"],
+      "Is_top_course": false,
+      "Is_recently_viewed_course": true,
+      "Syllabus": [
+        {
+          "Id": 4,
+          "Title": "Introduction to Swift",
+          "Summary": "Learn the basics of Swift programming.",
+          "Total content": 10,
+          "Hours to completed": 5.0
+        }
+      ],
+      "FAQ": [
+        {
+          "Id": 4,
+          "Title": "What is Mobile App Development?",
+          "Subtitle": "Creating mobile applications.",
+          "Description": "Mobile App Development involves creating applications for mobile devices."
+        }
+      ]
+    },
+    {
+      "Id": 5,
+      "Title": "Machine Learning",
+      "subTitle": "Principles of Machine Learning",
+      "Description": "Understand the foundations of machine learning.",
+      "Overview": "This course introduces machine learning algorithms and their applications.",
+      "Instructor": [
+        {
+          "instructor_id": 105,
+          "Image": "https://example.com/instructor5.jpg"
+        }
+      ],
+      "Price": 199.99,
+      "Skills": ["Python", "TensorFlow", "Scikit-Learn"],
+      "Is_top_course": true,
+      "Is_recently_viewed_course": false,
+      "Syllabus": [
+        {
+          "Id": 5,
+          "Title": "Introduction to Python for ML",
+          "Summary": "Learn Python for machine learning.",
+          "Total content": 8,
+          "Hours to completed": 4.0
+        }
+      ],
+      "FAQ": [
+        {
+          "Id": 5,
+          "Title": "What is Machine Learning?",
+          "Subtitle": "Automating decision-making processes.",
+          "Description": "Machine Learning is a subset of AI that enables machines to learn from data."
+        }
+      ]
+    },
+    {
+      "Id": 6,
+      "Title": "Artificial Intelligence",
+      "subTitle": "AI Fundamentals",
+      "Description": "Explore the world of artificial intelligence.",
+      "Overview": "This course covers the basics of AI, including neural networks and deep learning.",
+      "Instructor": [
+        {
+          "instructor_id": 106,
+          "Image": "https://example.com/instructor6.jpg"
+        }
+      ],
+      "Price": 159.99,
+      "Skills": ["Python", "TensorFlow", "Neural Networks"],
+      "Is_top_course": false,
+      "Is_recently_viewed_course": true,
+      "Syllabus": [
+        {
+          "Id": 6,
+          "Title": "Introduction to Neural Networks",
+          "Summary": "Learn the basics of neural networks.",
+          "Total content": 10,
+          "Hours to completed": 5.0
+        }
+      ],
+      "FAQ": [
+        {
+          "Id": 6,
+          "Title": "What is Artificial Intelligence?",
+          "Subtitle": "Intelligent behavior in machines.",
+          "Description": "Artificial Intelligence involves creating intelligent machines capable of performing tasks that typically require human intelligence."
+        }
+      ]
+    },
+    {
+      "Id": 7,
+      "Title": "Cybersecurity",
+      "subTitle": "Securing Digital Systems",
+      "Description": "Learn about cybersecurity threats and defenses.",
+      "Overview": "This course covers network security, cryptography, and secure coding practices.",
+      "Instructor": [
+        {
+          "instructor_id": 107,
+          "Image": "https://example.com/instructor7.jpg"
+        }
+      ],
+      "Price": 119.99,
+      "Skills": ["Network Security", "Cryptography", "Secure Coding"],
+      "Is_top_course": true,
+      "Is_recently_viewed_course": false,
+      "Syllabus": [
+        {
+          "Id": 7,
+          "Title": "Introduction to Network Security",
+          "Summary": "Learn the basics of securing networks.",
+          "Total content": 8,
+          "Hours to completed": 4.0
+        }
+      ],
+      "FAQ": [
+        {
+          "Id": 7,
+          "Title": "What is Cybersecurity?",
+          "Subtitle": "Protecting digital information.",
+          "Description": "Cybersecurity involves protecting systems, networks, and programs from digital attacks."
+        }
+      ]
+    },
+    {
+      "Id": 8,
+      "Title": "Cloud Computing",
+      "subTitle": "Cloud Services and Infrastructure",
+      "Description": "Explore cloud services and infrastructure.",
+      "Overview": "This course covers cloud platforms, virtualization, and cloud architecture.",
+      "Instructor": [
+        {
+          "instructor_id": 108,
+          "Image": "https://example.com/instructor8.jpg"
+        }
+      ],
+      "Price": 109.99,
+      "Skills": ["Virtualization", "Cloud Platforms", "Cloud Architecture"],
+      "Is_top_course": false,
+      "Is_recently_viewed_course": true,
+      "Syllabus": [
+        {
+          "Id": 8,
+          "Title": "Introduction to Virtualization",
+          "Summary": "Learn the basics of virtualizing servers.",
+          "Total content": 6,
+          "Hours to completed": 3.0
+        }
+      ],
+      "FAQ": [
+        {
+          "Id": 8,
+          "Title": "What is Cloud Computing?",
+          "Subtitle": "Delivering computing resources over the internet.",
+          "Description": "Cloud Computing involves delivering computing services over the internet, allowing users to access applications and data without local installation."
+        }
+      ]
+    },
+    {
+      "Id": 9,
+      "Title": "Blockchain",
+      "subTitle": "Understanding Blockchain Technology",
+      "Description": "Learn about blockchain technology and its applications.",
+      "Overview": "This course covers the basics of blockchain, cryptocurrencies, and smart contracts.",
+      "Instructor": [
+        {
+          "instructor_id": 109,
+          "Image": "https://example.com/instructor9.jpg"
+        }
+      ],
+      "Price": 139.99,
+      "Skills": ["Cryptocurrencies", "Smart Contracts", "Blockchain Basics"],
+      "Is_top_course": true,
+      "Is_recently_viewed_course": false,
+      "Syllabus": [
+        {
+          "Id": 9,
+          "Title": "Introduction to Cryptocurrencies",
+          "Summary": "Learn about different types of cryptocurrencies.",
+          "Total content": 8,
+          "Hours to completed": 4.0
+        }
+      ],
+      "FAQ": [
+        {
+          "Id": 9,
+          "Title": "What is Blockchain?",
+          "Subtitle": "Decentralized digital ledger.",
+          "Description": "Blockchain is a decentralized digital ledger that records transactions across many computers."
+        }
+      ]
+    },
+    {
+      "Id": 10,
+      "Title": "UI/UX Design",
+      "subTitle": "Designing User Interfaces and Experiences",
+      "Description": "Learn UI/UX design principles and practices.",
+      "Overview": "This course covers user interface design, user experience design, and interaction design.",
+      "Instructor": [
+        {
+          "instructor_id": 110,
+          "Image": "https://example.com/instructor10.jpg"
+        }
+      ],
+      "Price": 79.99,
+      "Skills": ["User Interface Design", "User Experience Design", "Interaction Design"],
+      "Is_top_course": true,
+      "Is_recently_viewed_course": true,
+      "Syllabus": [
+        {
+          "Id": 10,
+          "Title": "Introduction to UI/UX Design",
+          "Summary": "Learn the fundamentals of UI/UX design.",
+          "Total content": 6,
+          "Hours to completed": 3.0
+        }
+      ],
+      "FAQ": [
+        {
+          "Id": 10,
+          "Title": "What is UI/UX Design?",
+          "Subtitle": "Designing for user satisfaction.",
+          "Description": "UI/UX Design focuses on enhancing user satisfaction by improving the usability, accessibility, and pleasure provided in the interaction between the user and the product."
+        }
+      ]
+    }
+]

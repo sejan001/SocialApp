@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "422172594303",
+    "project_id": "socialapp-9f400",
+    "storage_bucket": "socialapp-9f400.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:422172594303:android:77267e01643dac2b9f6f4a",
+        "android_client_info": {
+          "package_name": "com.sejan.project_socialapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKS2WpQZQtvG8o2uMikMBArwcS9a2ILMY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,163 @@
+[
+    {
+      "Id": 1,
+      "Name": "John Smith",
+      "Image": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c510291e-a7f2-4f64-a963-85116f10b420/dg7k1go-1c1c387d-0785-4e48-b0b9-59612896e3ee.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2M1MTAyOTFlLWE3ZjItNGY2NC1hOTYzLTg1MTE2ZjEwYjQyMFwvZGc3azFnby0xYzFjMzg3ZC0wNzg1LTRlNDgtYjBiOS01OTYxMjg5NmUzZWUucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.830bmYKfCJ_pF2nkU6iifywtD0MJkX5d3JJTBvXXwc4",
+      "Field": ["Computer Science", "Software Engineering"],
+      "WorkExperience": 10.5,
+      "Summary": "Experienced computer scientist and software engineer."
+    },
+    {
+      "Id": 2,
+      "Name": "Alice Johnson",
+      "Image": "https://i.pinimg.com/564x/1d/b5/2d/1db52d1b6c0eba8fcc80531d982afa13.jpg",
+      "Field": ["Data Science", "Machine Learning"],
+      "WorkExperience": 8.7,
+      "Summary": "Data science expert with a focus on machine learning algorithms."
+    },
+    {
+      "Id": 3,
+      "Name": "Michael Davis",
+      "Image": "https://i.pinimg.com/750x/9e/f9/2c/9ef92cb30835df12f5259676debeed19.jpg",
+      "Field": ["Web Development", "UI/UX Design"],
+      "WorkExperience": 9.2,
+      "Summary": "Web development specialist and UI/UX design enthusiast."
+    },
+    {
+      "Id": 4,
+      "Name": "Emily Brown",
+      "Image": "https://i.pinimg.com/736x/06/63/62/066362242094eb66330d980c7b0d5fd5.jpg",
+      "Field": ["Cybersecurity", "Cloud Computing"],
+      "WorkExperience": 8.5,
+      "Summary": "Cybersecurity expert with extensive experience in cloud technologies."
+    },
+    {
+      "Id": 5,
+      "Name": "David Wilson",
+      "Image": "https://i.pinimg.com/736x/32/95/32/32953299e694af9ec6770d09acff846d.jpg",
+      "Field": ["Blockchain", "DevOps"],
+      "WorkExperience": 6.2,
+      "Summary": "Blockchain enthusiast and DevOps specialist."
+    },
+    {
+      "Id": 6,
+      "Name": "Sophia Lee",
+      "Image": "https://img.wattpad.com/e2f501794184e3f70312e01975263aa651eef299/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061642d6d656469612d736572766963652f53746f7279496d6167652f31477177324a464e3766616748673d3d2d313032343436313138322e313636323866386330626439383736623934383137313131353733362e6a7067?s=fit&w=720&h=720",
+      "Field": ["Digital Marketing", "Finance & Accounting"],
+      "WorkExperience": 7.8,
+      "Summary": "Experienced digital marketer with a background in finance and accounting."
+    },
+    {
+      "Id": 7,
+      "Name": "Daniel Garcia",
+      "Image": "assets/images/daniel_garcia.jpg",
+      "Field": ["Business Management", "Entrepreneurship"],
+      "WorkExperience": 9.3,
+      "Summary": "Business management expert and serial entrepreneur."
+    },
+    {
+      "Id": 8,
+      "Name": "Emma Miller",
+      "Image": "assets/images/emma_miller.jpg",
+      "Field": ["Photography", "Graphic Design"],
+      "WorkExperience": 5.7,
+      "Summary": "Passionate photographer and skilled graphic designer."
+    },
+    {
+      "Id": 9,
+      "Name": "James Clark",
+      "Image": "assets/images/james_clark.jpg",
+      "Field": ["Music Production", "Sound Engineering"],
+      "WorkExperience": 6.9,
+      "Summary": "Music producer and sound engineer with a knack for creativity."
+    },
+    {
+      "Id": 10,
+      "Name": "Olivia Taylor",
+      "Image": "assets/images/olivia_taylor.jpg",
+      "Field": ["Language Learning", "Translation"],
+      "WorkExperience": 7.1,
+      "Summary": "Language enthusiast and expert translator."
+    },
+    {
+      "Id": 11,
+      "Name": "Noah Robinson",
+      "Image": "assets/images/noah_robinson.jpg",
+      "Field": ["Cooking & Culinary Arts", "Nutrition"],
+      "WorkExperience": 8.4,
+      "Summary": "Chef and nutrition expert passionate about culinary arts."
+    },
+    {
+      "Id": 12,
+      "Name": "Ava Martinez",
+      "Image": "assets/images/ava_martinez.jpg",
+      "Field": ["Fitness & Health", "Personal Training"],
+      "WorkExperience": 6.5,
+      "Summary": "Fitness enthusiast and certified personal trainer."
+    },
+    {
+      "Id": 13,
+      "Name": "William Taylor",
+      "Image": "assets/images/william_taylor.jpg",
+      "Field": ["Art History", "Fine Arts"],
+      "WorkExperience": 7.9,
+      "Summary": "Art historian and fine arts connoisseur."
+    },
+    {
+      "Id": 14,
+      "Name": "Ella Wilson",
+      "Image": "assets/images/ella_wilson.jpg",
+      "Field": ["Psychology", "Mental Health"],
+      "WorkExperience": 6.3,
+      "Summary": "Psychologist specializing in mental health and well-being."
+    },
+    {
+        "Id": 15,
+        "Name": "Nathan Thompson",
+        "Image": "assets/images/nathan_thompson.jpg",
+        "Field": ["Physics", "Quantum Mechanics"],
+        "WorkExperience": 8.2,
+        "Summary": "Physicist with expertise in quantum mechanics and theoretical physics."
+      },
+      {
+        "Id": 16,
+        "Name": "Grace Carter",
+        "Image": "assets/images/grace_carter.jpg",
+        "Field": ["Environmental Science", "Climate Change"],
+        "WorkExperience": 7.6,
+        "Summary": "Environmental scientist passionate about climate change research."
+      },
+      {
+        "Id": 17,
+        "Name": "Luke Adams",
+        "Image": "assets/images/luke_adams.jpg",
+        "Field": ["Astronomy", "Astrophysics"],
+        "WorkExperience": 9.7,
+        "Summary": "Astronomer and astrophysicist exploring the mysteries of the universe."
+      },
+      {
+        "Id": 18,
+        "Name": "Lily White",
+        "Image": "assets/images/lily_white.jpg",
+        "Field": ["Biology", "Genetics"],
+        "WorkExperience": 7.4,
+        "Summary": "Biologist specializing in genetics and molecular biology."
+      },
+      {
+        "Id": 19,
+        "Name": "Daniel Martinez",
+        "Image": "assets/images/daniel_martinez.jpg",
+        "Field": ["Economics", "Finance"],
+        "WorkExperience": 8.9,
+        "Summary": "Economist with expertise in financial markets and macroeconomics."
+      },
+      {
+        "Id": 20,
+        "Name": "Sophie Adams",
+        "Image": "assets/images/sophie_adams.jpg",
+        "Field": ["History", "World Cultures"],
+        "WorkExperience": 7.1,
+        "Summary": "Historian with a passion for exploring diverse world cultures."
+      }
+    ]
+    

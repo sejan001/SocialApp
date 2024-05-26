@@ -1,0 +1,186 @@
+[
+  {
+  "post_id": 1,
+  "user_id": 1,
+  "created_at": 1622559600,
+  "title": "First post",
+  "description": "This is the first post.",
+  "Image": [
+  {
+  "Id": 1,
+  "Url": "https://myrepublica.nagariknetwork.com/uploads/media/2019/July/street%20note.jpg"
+  },
+  {
+  "Id": 2,
+  "Url": "https://assets-api.kathmandupost.com/thumb.php?src=https://assets-cdn.kathmandupost.com/uploads/source/news/2023/opinion/leadpostfilephotoo-1683470445.jpg&w=900&height=601"
+  }
+  ],
+  "Post_liked_by": [
+  {
+  "User_id": 2,
+  "dateTime": "2024-05-09T12:05:00Z"
+  },
+  {
+  "User_id": 3,
+  "dateTime": "2024-05-09T12:10:00Z"
+  }
+  ]
+  },
+  {
+  "post_id": 2,
+  "user_id": 2,
+  "created_at": 1622646000,
+  "title": "Second post",
+  "description": "This is the second post.",
+  "Image": [
+    {
+      "Id": 1,
+      "Url": "https://myrepublica.nagariknetwork.com/media/cache/nagarik_thumbnail_458_364/uploads/media/2018/August/Buddhist-monk-tries-to-fill-pothole-by-putting-grabbles.jpg"
+      },
+      {
+      "Id": 2,
+      "Url": "https://myrepublica.nagariknetwork.com/media/cache/nagarik_thumbnail_458_364/uploads/media/2018/June/janakpur-june-5.jpg"}
+
+  ],
+  "Post_liked_by": []
+  },
+  {
+  "post_id": 3,
+  "user_id": 1,
+  "created_at": 1622732400,
+  "title": "Third post",
+  "description": "This is the third post.",
+  "Image": [
+  {
+  "Id": 3,
+  "Url": "https://cdn.iview.abc.net.au/thumbs/i/ns/NSWC2022_65cd5f6083b31_1920.jpg"
+  }
+  ],
+  "Post_liked_by": [
+  {
+  "User_id": 2,
+  "dateTime": "2024-05-10T12:00:00Z"
+  }
+  ]
+  },
+  {
+  "post_id": 4,
+  "user_id": 3,
+  "created_at": 1622818800,
+  "title": "Fourth post",
+  "description": "This is the fourth post.",
+  "Image": [
+  {
+  "Id": 4,
+  "Url": "https://i.abcnewsfe.com/a/4199b46a-bbad-4077-9a91-59f24fcab995/greenfield-tornado-1-ht-gmh-240522_1716387362023_hpMain_16x9.jpg?w=992"
+  }
+  ],
+  "Post_liked_by": []
+  },
+  {
+  "post_id": 5,
+  "user_id": 2,
+  "created_at": 1622905200,
+  "title": "Fifth post",
+  "description": "This is the fifth post.",
+  "Image": [
+    {
+      "Id": 4,
+      "Url": "https://ichef.bbci.co.uk/news/480/cpsprodpb/40b9/live/16b6d340-1852-11ef-b5cc-cb8b8c4cef5a.jpg.webp"}
+  ],
+  "Post_liked_by": [
+  {
+  "User_id": 1,
+  "dateTime": "2024-05-11T12:00:00Z"
+  },
+  {
+  "User_id": 3,
+  "dateTime": "2024-05-11T12:05:00Z"
+  }
+  ]
+  },
+  {
+  "post_id": 6,
+  "user_id": 1,
+  "created_at": 1622991600,
+  "title": "Sixth post",
+  "description": "This is the sixth post.",
+  "Image": [
+  {
+  "Id": 5,
+  "Url": "https://assets-api.kathmandupost.com/thumb.php?src=https://assets-cdn.kathmandupost.com/uploads/source/news/2024/news/protest-1716424969.jpg&w=800&height=800"
+  }
+  ],
+  "Post_liked_by": []
+  },
+  {
+  "post_id": 7,
+  "user_id": 3,
+  "created_at": 1623078000,
+  "title": "Seventh post",
+  "description": "This is the seventh post.",
+  "Image": [
+  {
+  "Id": 6,
+  "Url": "https://myrepublica.nagariknetwork.com/media/cache/nagarik_thumbnail_458_364/uploads/media/1669188768_rajansindhuli-1200x560_20221123141802.jpg"
+  }
+  ],
+  "Post_liked_by": [
+  {
+  "User_id": 1,
+  "dateTime": "2024-05-12T12:00:00Z"
+  },
+  {
+  "User_id": 2,
+  "dateTime": "2024-05-12T12:05:00Z"
+  }
+  ]
+  },
+  {
+  "post_id": 8,
+  "user_id": 2,
+  "created_at": 1623164400,
+  "title": "Eighth post",
+  "description": "This is the eighth post.",
+  "Image": [
+    {
+      "Id" : 8,
+      "Url" : "https://focus.belfasttelegraph.co.uk/thumbor/x1ksESgS-ooXN2X749-KOa0m8YM=/60x0:735x450/960x640/prod-mh-ireland/28f01a3d-3743-40c9-8ee1-16ef7295bec5/2cf1586c-37a2-4b99-90ff-fc47565693d5/video/video.jpg"
+    }
+  ],
+  "Post_liked_by": []
+  },
+  {
+  "post_id": 9,
+  "user_id": 1,
+  "created_at": 1623250800,
+  "title": "Ninth post",
+  "description": "This is the ninth post.",
+  "Image": [
+  {
+  "Id": 7,
+  "Url": "https://contenthub-static.grammarly.com/blog/wp-content/uploads/2022/08/BMD-3398.png"
+  }
+  ],
+  "Post_liked_by": [
+  {
+  "User_id": 3,
+  "dateTime": "2024-05-13T12:00:00Z"
+  }
+  ]
+  },
+  {
+  "post_id": 10,
+  "user_id": 3,
+  "created_at": 1623337200,
+  "title": "Tenth post",
+  "description": "This is the tenth post.",
+  "Image": [
+  {
+  "Id": 8,
+  "Url": "https://img.freepik.com/free-vector/online-article-concept-illustration_114360-5193.jpg"
+  }
+  ],
+  "Post_liked_by": []
+  }
+  ]

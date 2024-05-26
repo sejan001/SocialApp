@@ -1,0 +1,43 @@
+[
+    {
+      "Id": 1,
+      "Title": "Computer Science"
+    },
+    {
+      "Id": 2,
+      "Title": "Data Science"
+    },
+    {
+      "Id": 3,
+      "Title": "Web Development"
+    },
+    {
+      "Id": 4,
+      "Title": "Mobile App Development"
+    },
+    {
+      "Id": 5,
+      "Title": "Machine Learning"
+    },
+    {
+      "Id": 6,
+      "Title": "Artificial Intelligence"
+    },
+    {
+      "Id": 7,
+      "Title": "Cybersecurity"
+    },
+    {
+      "Id": 8,
+      "Title": "Cloud Computing"
+    },
+    {
+      "Id": 9,
+      "Title": "Blockchain"
+    },
+    {
+      "Id": 10,
+      "Title": "UI/UX Design"
+    }
+  ]
+  
