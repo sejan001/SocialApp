@@ -300,9 +300,7 @@ class _EditProfileState extends State<EditProfile> {
                                         value: "Male",
                                         groupValue: _gender,
                                         onChanged: (value) {
-                                          setState(() {
-                                            _gender = value!;
-                                          });
+                                          _gender = value!;
                                         }),
                                     Text("Male",
                                         style: GoogleFonts.getFont(

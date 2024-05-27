@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
-
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:social_app/models/friendListModel.dart';
 
@@ -8,6 +8,7 @@ import 'package:social_app/models/sharedPrefService';
 import 'package:social_app/models/usermodel.dart';
 
 class Showprofiles extends StatefulWidget {
+  final bool onlyView;
   final String username;
   final String password;
   final isDark;
@@ -22,6 +23,7 @@ class Showprofiles extends StatefulWidget {
     this.targetUser,
     this.currentUsername,
     this.currentPassword,
+    required this.onlyView,
   }) : super(key: key);
 
   @override
@@ -31,6 +33,7 @@ class Showprofiles extends StatefulWidget {
 class _ShowprofilesState extends State<Showprofiles> {
   List<userModel> existingUsers = [];
   List<FriendModel> friends = [];
+
   Future<void> loadUsers() async {
     try {
       String? json = SharedPrefService.getString(key: "sign-up");
@@ -56,15 +59,17 @@ class _ShowprofilesState extends State<Showprofiles> {
 
   @override
   Widget build(BuildContext context) {
+    bool showAdd = widget.onlyView;
     String username = widget.username;
     String password = widget.password;
-
+    DateTime now = DateTime.now();
+    String dateFormate = DateFormat("yyyy-MM-dd").format(now);
     double height = MediaQuery.sizeOf(context).height * 1;
     double width = MediaQuery.sizeOf(context).width * 1;
     final currentUser = existingUsers.firstWhere(
         (user) =>
-            user.name == widget.currentUsername &&
-            password == widget.currentPassword,
+            user.username == widget.currentUsername &&
+            user.password == widget.currentPassword,
         orElse: () => userModel(
             username: " username",
             password: "password",
@@ -89,15 +94,21 @@ class _ShowprofilesState extends State<Showprofiles> {
       final newFriendReq = FriendModel(
           username: currentUser.username.toString(),
           friendUsername: friendUser.username.toString(),
-          requestedByUsername: currentUser.name.toString(),
-          createdAt: DateTime.now(),
+          requestedByUsername: currentUser.username.toString(),
+          createdAt: now,
           hasNewRequest: true,
           hasNewRequestAccepted: false,
           hasRemoved: false);
+      setState(() {
+        friendUser.friendList!.add(newFriendReq);
+        SharedPrefService.setString(
+            key: "sign-up", value: jsonEncode(existingUsers));
+      });
 
-      friendUser.friendList!.add(newFriendReq);
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text("Sent Request")));
+      print("saathi is ${friendUser.username}");
+      print("ma is ${currentUser.username}");
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          backgroundColor: Colors.green, content: Text("Sent Request")));
     }
 
     return Scaffold(
@@ -166,13 +177,31 @@ class _ShowprofilesState extends State<Showprofiles> {
                     color: Color.fromARGB(255, 210, 219, 219),
                     borderRadius: BorderRadius.all(Radius.circular(10))),
                 child: ListTile(
-                  leading: IconButton(
+                  leading: showAdd
+                      ? Icon((Icons.person), color: Colors.green)
+                      : IconButton(
+                          onPressed: () {
+                            sendRequest(currentUser, friendUser);
+                          },
+                          icon: Icon(Icons.add)),
+                  trailing: IconButton(
                       onPressed: () {
-                        sendRequest(currentUser, friendUser);
+                        setState(() {
+                          currentUser.friends = currentUser.friends ?? [];
+                          currentUser.friends!.remove(friendUser.username);
+                          SharedPrefService.setString(
+                            key: "sign-up",
+                            value: jsonEncode(existingUsers),
+                          );
+                        });
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            backgroundColor: Colors.red,
+                            content: Text("Removed Friend"),
+                          ),
+                        );
                       },
-                      icon: Icon(Icons.add)),
-                  trailing:
-                      IconButton(onPressed: () {}, icon: Icon(Icons.cancel)),
+                      icon: Icon(Icons.cancel)),
                 ),
               )
             ],

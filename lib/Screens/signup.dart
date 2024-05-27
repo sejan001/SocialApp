@@ -12,6 +12,7 @@ import "dart:convert";
 
 import 'package:social_app/models/sharedPrefService';
 import 'package:social_app/models/usermodel.dart';
+import 'package:uuid/uuid.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key, required this.isDark});
@@ -29,6 +30,7 @@ class _SignUpState extends State<SignUp> {
   TextEditingController _username = TextEditingController();
   TextEditingController _password = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  var uuid = Uuid();
   bool _showPass = true;
   bool _showLoader = false;
   String NoImageSelected = "No image selected";
@@ -270,7 +272,7 @@ class _SignUpState extends State<SignUp> {
                                       onPressed: () {
                                         setState(() {
                                           _showPass = !_showPass;
-                                          // clearData();
+                                          clearData();
                                         });
                                       },
                                       icon: Icon(Icons.remove_red_eye)),
@@ -308,6 +310,7 @@ class _SignUpState extends State<SignUp> {
                                   String name2 = _username.text.toUpperCase();
 
                                   userModel user = userModel(
+                                      id: uuid.v4(),
                                       username: _username.text,
                                       password: _password.text,
                                       name: name2,
@@ -330,7 +333,7 @@ class _SignUpState extends State<SignUp> {
                                         .map((jsonUsers) =>
                                             userModel.fromJson(jsonUsers))
                                         .toList();
-                                  } else {}
+                                  }
                                   if (newUser.any((user) =>
                                       user.username == _username.text)) {
                                     ScaffoldMessenger.of(context).showSnackBar(
@@ -361,8 +364,9 @@ class _SignUpState extends State<SignUp> {
                                       Navigator.pop(context);
                                     });
 
-                                    log(existingUsers ?? '');
+                                    // log(existingUsers ?? '');
                                     print(user.username);
+                                    print(user.id);
                                     print(user.password);
                                     clear();
                                   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:social_app/Screens/Tabs/Friends.dart';
+import 'package:social_app/Screens/FriendList.dart';
+import 'package:social_app/Screens/Tabs/Friends_Tab.dart';
 import 'package:social_app/Screens/Tabs/Home_Tab.dart';
 import 'package:social_app/Screens/Tabs/notification.dart';
 import 'package:social_app/Screens/Tabs/profile_tab.dart';
@@ -8,6 +9,8 @@ import 'package:social_app/Screens/homeScreen.dart';
 import 'package:social_app/Screens/internet.dart';
 
 import 'package:social_app/Screens/login.dart';
+import 'package:social_app/Screens/message_see.dart';
+
 import 'package:social_app/Screens/showProfiles.dart';
 import 'package:social_app/Screens/signup.dart';
 

@@ -1,12 +1,16 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:social_app/Screens/Tabs/Friends.dart';
+import 'package:social_app/Screens/Tabs/Friends_Tab.dart';
 import 'package:social_app/Screens/Tabs/Home_Tab.dart';
+import 'package:social_app/Screens/message_see.dart';
 import 'package:social_app/Screens/Tabs/notification.dart';
 
 import 'package:social_app/Screens/Tabs/profile_tab.dart';
 import 'package:social_app/Screens/categories.dart';
+import 'package:social_app/Screens/login.dart';
+
+import 'package:social_app/Screens/Tabs/messages_screen_tab.dart';
 
 import 'package:social_app/models/sharedPrefService';
 import 'package:social_app/models/usermodel.dart';
@@ -64,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
     print("currentUser is ${currentUser.username}");
     String ppPath = currentUser.profileImagePath.toString();
     return DefaultTabController(
-      length: 4,
+      length: 5,
       child: Scaffold(
         drawer: Container(
           decoration: BoxDecoration(),
@@ -181,7 +185,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       )),
                 ),
                 ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Login(isDark: isDark)));
+                    },
                     child: Text(
                       "Logout",
                       style: TextStyle(
@@ -217,6 +226,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: isDark ? Colors.white : Colors.black,
                     )),
                     Tab(
+                        icon: Icon(Icons.message,
+                            color: isDark ? Colors.white : Colors.black)),
+                    Tab(
                         icon: Icon(
                       Icons.people,
                       color: isDark ? Colors.white : Colors.black,
@@ -237,6 +249,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 password: password,
               ),
               HomeTab(isDark: isDark),
+              MesssageScreen(
+                  currentUsername: currentUser.username,
+                  currentPassword: currentUser.password),
               Friends(
                   currentUsername: currentUser.username,
                   currentPassword: currentUser.password),
