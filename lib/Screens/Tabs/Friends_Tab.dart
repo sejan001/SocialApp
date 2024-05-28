@@ -102,7 +102,7 @@ class _FriendsState extends State<Friends> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) => FriendList(
-                                        onlyView: true,
+                                        
                                         currentUsername: widget.currentUsername,
                                         currentPassword: widget.currentPassword,
                                       )));
@@ -124,6 +124,8 @@ class _FriendsState extends State<Friends> {
                           itemCount: searchedUsers.length,
                           itemBuilder: (context, index) {
                             final user = searchedUsers[index];
+
+                         
                             return Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: GestureDetector(
@@ -138,9 +140,10 @@ class _FriendsState extends State<Friends> {
                                                     widget.currentPassword,
                                                 targetUser: user,
                                                 isDark: false,
-                                                username: user.username ?? '',
-                                                password: user.password ?? '',
-                                                onlyView: false,
+                                                friendPassword: user.password,
+                                                friendUsername: user.username,
+                                               
+                                               
                                               )));
                                   print(widget.currentUsername);
                                   print(user);
@@ -150,17 +153,20 @@ class _FriendsState extends State<Friends> {
                                   decoration: BoxDecoration(
                                       color: Colors.grey,
                                       borderRadius: BorderRadius.circular(20)),
-                                  child: ListTile(
-                                      leading: CircleAvatar(
-                                        radius: 30,
-                                        backgroundImage: FileImage(File(
-                                            user.profileImagePath.toString())),
-                                      ),
-                                      title: Text(
-                                        user.name.toString(),
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w700),
-                                      )),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: ListTile(
+                                        leading: CircleAvatar(
+                                          radius: 30,
+                                          backgroundImage: FileImage(File(
+                                              user.profileImagePath.toString())),
+                                        ),
+                                        title: Text(
+                                          user.name.toString(),
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w700),
+                                        )),
+                                  ),
                                 ),
                               ),
                             );

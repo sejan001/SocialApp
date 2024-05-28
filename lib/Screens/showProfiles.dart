@@ -8,22 +8,22 @@ import 'package:social_app/models/sharedPrefService';
 import 'package:social_app/models/usermodel.dart';
 
 class Showprofiles extends StatefulWidget {
-  final bool onlyView;
-  final String username;
-  final String password;
+  final friendUsername;
+  final friendPassword;
+
+
   final isDark;
   final currentUsername;
   final currentPassword;
   final targetUser;
   Showprofiles({
     Key? key,
-    required this.username,
-    required this.password,
+   
     this.isDark,
     this.targetUser,
     this.currentUsername,
-    this.currentPassword,
-    required this.onlyView,
+    this.currentPassword, this.friendUsername, this.friendPassword,
+ 
   }) : super(key: key);
 
   @override
@@ -59,9 +59,9 @@ class _ShowprofilesState extends State<Showprofiles> {
 
   @override
   Widget build(BuildContext context) {
-    bool showAdd = widget.onlyView;
-    String username = widget.username;
-    String password = widget.password;
+
+    String username = widget.friendUsername;
+    String password = widget.friendPassword;
     DateTime now = DateTime.now();
     String dateFormate = DateFormat("yyyy-MM-dd").format(now);
     double height = MediaQuery.sizeOf(context).height * 1;
@@ -87,7 +87,6 @@ class _ShowprofilesState extends State<Showprofiles> {
             education: "",
             gender: ""));
 
-    print("currentUser is ${friendUser.username}");
     String ppPath = friendUser.profileImagePath.toString();
 
     sendRequest(userModel currentUser, userModel targetUser) {
@@ -110,6 +109,9 @@ class _ShowprofilesState extends State<Showprofiles> {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           backgroundColor: Colors.green, content: Text("Sent Request")));
     }
+    currentUser.friends = currentUser.friends ?? [];
+friendUser.friends = friendUser.friends ?? [];
+bool isFriend = (friendUser.friends != null && (friendUser.friends!.contains(currentUser.username!.toUpperCase()) || friendUser.friends!.contains(username.toUpperCase())));
 
     return Scaffold(
         appBar: AppBar(),
@@ -177,7 +179,7 @@ class _ShowprofilesState extends State<Showprofiles> {
                     color: Color.fromARGB(255, 210, 219, 219),
                     borderRadius: BorderRadius.all(Radius.circular(10))),
                 child: ListTile(
-                  leading: showAdd
+                  leading: isFriend
                       ? Icon((Icons.person), color: Colors.green)
                       : IconButton(
                           onPressed: () {
@@ -187,6 +189,7 @@ class _ShowprofilesState extends State<Showprofiles> {
                   trailing: IconButton(
                       onPressed: () {
                         setState(() {
+                          print(isFriend);
                           currentUser.friends = currentUser.friends ?? [];
                           currentUser.friends!.remove(friendUser.username);
                           SharedPrefService.setString(

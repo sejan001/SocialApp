@@ -9,11 +9,11 @@ import 'package:social_app/models/usermodel.dart';
 import 'package:uuid/uuid.dart';
 
 class FriendList extends StatefulWidget {
-  final onlyView;
+  
   final currentUsername;
   final currentPassword;
   const FriendList(
-      {super.key, this.currentUsername, this.currentPassword, this.onlyView});
+      {super.key, this.currentUsername, this.currentPassword});
 
   @override
   State<FriendList> createState() => _FriendListState();
@@ -77,7 +77,7 @@ class _FriendListState extends State<FriendList> {
               itemBuilder: (context, index) {
                 final currentfriend = currentUserFriends[index];
                 final currentFriend = existingUsers.firstWhere(
-                    (user) => user.username == currentfriend.toLowerCase());
+                    (user) => user.username!.toLowerCase() == currentfriend.toLowerCase(), orElse: () => userModel(username: "", password: "", profileImagePath: "", address: "", education: "", gender: ""));
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: GestureDetector(
@@ -87,10 +87,12 @@ class _FriendListState extends State<FriendList> {
                           MaterialPageRoute(
                               builder: (context) => Showprofiles(
                                   isDark: false,
-                                  onlyView: widget.onlyView,
-                                  username: currentFriend.username.toString(),
-                                  password:
-                                      currentFriend.password.toString())));
+                                  currentUsername: currentuser.username,
+
+                                  currentPassword: currentuser.password,
+                                  friendUsername: currentFriend.username,
+                                  friendPassword:
+                                      currentFriend.password)));
                     },
                     child: Container(
                       decoration: BoxDecoration(
@@ -115,6 +117,7 @@ class _FriendListState extends State<FriendList> {
                                         TextField(
                                           controller: _message,
                                           decoration: InputDecoration(
+                                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
                                             hintText: "send message",
                                           ),
                                         ),
@@ -122,7 +125,18 @@ class _FriendListState extends State<FriendList> {
                                           height: height * .01,
                                         ),
                                         IconButton(
-                                            onPressed: () {},
+                                            onPressed: () {
+                                              final newMessage = Message(messageId: uuid.v4(), senderUsername: currentuser.username.toString(),
+                                              receiverUsername: currentFriend.username.toString(), content: _message.text, timestamp: DateTime.now());
+                                              currentFriend.messages!.add(newMessage);
+                                              currentuser.messages!.add(newMessage);
+                                              SharedPrefService.setString(key: 'sign-up', value: jsonEncode(existingUsers));
+                                              Navigator.pop(context);
+                                              // ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Sent Message')));
+                                              print('pahilo message is ${currentuser.messages}');
+                                              print('dusro message is ${newMessage.content}');
+
+                                            },
                                             icon: Icon(Icons.arrow_forward)),
                                       ],
                                     );

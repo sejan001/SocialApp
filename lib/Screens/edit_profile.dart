@@ -13,14 +13,17 @@ import 'package:social_app/models/sharedPrefService';
 import 'package:social_app/models/usermodel.dart';
 
 class EditProfile extends StatefulWidget {
+    final bool isDark;
+  final username;
+  final password;
+  final VoidCallback updateProfileScreen;
+ 
   const EditProfile(
       {super.key,
       required this.isDark,
       required this.username,
-      required this.password});
-  final bool isDark;
-  final username;
-  final password;
+      required this.password, required this.updateProfileScreen});
+
 
   @override
   State<EditProfile> createState() => _EditProfileState();
@@ -300,7 +303,9 @@ class _EditProfileState extends State<EditProfile> {
                                         value: "Male",
                                         groupValue: _gender,
                                         onChanged: (value) {
-                                          _gender = value!;
+                                          setState(() {
+                                            _gender = value!;
+                                          });
                                         }),
                                     Text("Male",
                                         style: GoogleFonts.getFont(
@@ -441,11 +446,15 @@ class _EditProfileState extends State<EditProfile> {
                                     existingUsers[userIndex].address =
                                         _address.text;
 
+
+  
+
                                     String encodedJson =
                                         jsonEncode(existingUsers);
                                     SharedPrefService.setString(
                                         key: "sign-up", value: encodedJson);
                                   });
+                                    widget.updateProfileScreen();
                                   ScaffoldMessenger.of(context)
                                       .showSnackBar(SnackBar(
                                     backgroundColor:

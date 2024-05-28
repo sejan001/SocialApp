@@ -33,11 +33,19 @@ class _ProfileTabState extends State<ProfileTab> {
       print("error loading json");
     }
   }
+  void updateProfile(){
+    loadUsers().then((_){
+      setState(() {
+        
+      });
 
+    });
+  }
   @override
   void initState() {
     loadUsers();
     super.initState();
+    updateProfile();
   }
 
   @override
@@ -132,6 +140,7 @@ class _ProfileTabState extends State<ProfileTab> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => EditProfile(
+                                  updateProfileScreen : (){ updateProfile();},
                                     isDark: widget.isDark,
                                     username: currentUser.username,
                                     password: currentUser.password)));

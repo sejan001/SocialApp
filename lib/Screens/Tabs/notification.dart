@@ -134,7 +134,7 @@ class _NotificationTabState extends State<NotificationTab> {
                                   onPressed: () {
                                     setState(() {
                                       currentUser.friends!.add(
-                                          currentNotifiUser.name.toString());
+                                          currentNotifiUser.name!.toUpperCase().toString());
                                       currentNotifiUser.friends!
                                           .add(currentUser.name.toString());
                                       SharedPrefService.setString(

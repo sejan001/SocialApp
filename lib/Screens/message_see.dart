@@ -11,13 +11,14 @@ import 'package:social_app/models/usermodel.dart';
 import 'package:uuid/uuid.dart';
 
 class MessageSee extends StatefulWidget {
+  final VoidCallback? onUpdateMessagesList;
   final userModel friendUser;
   final userModel currentUser;
 
   const MessageSee({
     super.key,
     required this.friendUser,
-    required this.currentUser,
+    required this.currentUser, this.onUpdateMessagesList, 
   });
 
   @override
@@ -69,6 +70,8 @@ class _MessageState extends State<MessageSee> {
         .toList();
   }
 
+
+
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -99,9 +102,63 @@ class _MessageState extends State<MessageSee> {
             SizedBox(
               width: width * .03,
             ),
-            Text(
-              friendUser.username.toString(),
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            Row(
+              children: [
+                Text(
+                  friendUser.username!.toUpperCase(),
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(width: width*.5,),
+            IconButton(onPressed: (){
+            
+     
+     
+         _messages.removeWhere((message)=>  (message.senderUsername == currentUser.username &&
+                message.receiverUsername == friendUser.username) ||
+            (message.senderUsername == friendUser.username &&
+                message.receiverUsername == currentUser.username) ||
+            (message.senderUsername == friendUser.username &&
+                message.receiverUsername == currentUser.username) ||
+            (message.senderUsername == currentUser.username &&
+                message.receiverUsername == friendUser.username) );
+
+      currentUser.messages!.removeWhere((message)=>  (message.senderUsername == currentUser.username &&
+                message.receiverUsername == friendUser.username) ||
+            (message.senderUsername == friendUser.username &&
+                message.receiverUsername == currentUser.username) ||
+            (message.senderUsername == friendUser.username &&
+                message.receiverUsername == currentUser.username) ||
+            (message.senderUsername == currentUser.username &&
+                message.receiverUsername == friendUser.username) );
+
+                 friendUser.messages!.removeWhere((message)=>  (message.senderUsername == currentUser.username &&
+                message.receiverUsername == friendUser.username) ||
+            (message.senderUsername == friendUser.username &&
+                message.receiverUsername == currentUser.username) ||
+            (message.senderUsername == friendUser.username &&
+                message.receiverUsername == currentUser.username) ||
+            (message.senderUsername == currentUser.username &&
+                message.receiverUsername == friendUser.username) );
+
+    if (widget.onUpdateMessagesList != null) {
+      widget.onUpdateMessagesList!(); 
+    }
+    
+          setState(() {
+            print('aba message ${_messages}');
+                    print('mero message ${currentUser.messages}');
+                       print('sathi message ${currentUser.messages}');
+                        
+
+          });
+           SharedPrefService.setString(key: "sign-up", value: jsonEncode(existingUsers));
+           if (widget.onUpdateMessagesList != null) {
+      widget.onUpdateMessagesList; 
+    }
+    Navigator.pop(context);
+              
+            }, icon: Icon(Icons.delete,color: Colors.red,))
+              ],
             )
           ],
         ),
@@ -184,6 +241,9 @@ class _MessageState extends State<MessageSee> {
                         SharedPrefService.setString(
                             key: "sign-up", value: jsonEncode(existingUsers));
                         _messageController.clear();
+                        print('aba message ${_messages}');
+                    print('mero message ${currentUser.messages}');
+                       print('sathi message ${currentUser.messages}');
                       }
                     },
                   ),

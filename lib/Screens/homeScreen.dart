@@ -234,7 +234,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: isDark ? Colors.white : Colors.black,
                     )),
                     Tab(
-                      icon: Icon(Icons.notification_add_sharp),
+                      icon: Icon(Icons.notification_add_sharp, color: isDark ? Colors.white : Colors.black),
                     )
                   ],
                 ),

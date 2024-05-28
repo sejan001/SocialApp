@@ -52,7 +52,12 @@ class _MesssageScreenState extends State<MesssageScreen> {
       isLoading = false;
     });
   }
+  void updateMessagesList() {
 
+    loadUsers().then((_) {
+      setState(() {});
+    });
+  }
   @override
   void initState() {
     super.initState();
@@ -115,8 +120,22 @@ class _MesssageScreenState extends State<MesssageScreen> {
                           messages: [],
                         ),
                       );
-
-                      return Padding(
+if (friendUser.messages!.where((message)=>  (message.senderUsername == currentUser.username &&
+                message.receiverUsername == friendUser.username) ||
+            (message.senderUsername == friendUser.username &&
+                message.receiverUsername == currentUser.username) ||
+            (message.senderUsername == friendUser.username &&
+                message.receiverUsername == currentUser.username) ||
+            (message.senderUsername == currentUser.username &&
+                message.receiverUsername == friendUser.username)).isNotEmpty && friendUser.messages!.where((message)=>  (message.senderUsername == currentUser.username &&
+                message.receiverUsername == friendUser.username) ||
+            (message.senderUsername == friendUser.username &&
+                message.receiverUsername == currentUser.username) ||
+            (message.senderUsername == friendUser.username &&
+                message.receiverUsername == currentUser.username) ||
+            (message.senderUsername == currentUser.username &&
+                message.receiverUsername == friendUser.username)).isNotEmpty) 
+    return Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: GestureDetector(
                           onTap: () {
@@ -124,6 +143,7 @@ class _MesssageScreenState extends State<MesssageScreen> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) => MessageSee(
+                                   onUpdateMessagesList: updateMessagesList,
                                   friendUser: friendUser,
                                   currentUser: currentUser,
                                 ),
@@ -150,7 +170,10 @@ class _MesssageScreenState extends State<MesssageScreen> {
                           ),
                         ),
                       );
-                    },
+  
+}
+                    
+                    ,
                   ),
                 ),
               ],
