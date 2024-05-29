@@ -250,12 +250,15 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               HomeTab(isDark: isDark),
               MesssageScreen(
+                isDark: isDark,
                   currentUsername: currentUser.username,
                   currentPassword: currentUser.password),
               Friends(
+                 isDark: isDark,
                   currentUsername: currentUser.username,
                   currentPassword: currentUser.password),
               NotificationTab(
+                 isDark: isDark,
                   currentUsername: currentUser.username,
                   currentPassword: currentUser.password)
             ],

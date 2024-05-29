@@ -43,6 +43,22 @@ class _LoginState extends State<Login> {
   ];
 
   bool isDark = false;
+  Future<void> loadUsers() async {
+    String? json = SharedPrefService.getString(key: "sign-up");
+    if (json != null && json.isNotEmpty) {
+      List<dynamic> jsonUsers = jsonDecode(json);
+      existingUsers =
+          jsonUsers.map((user) => userModel.fromJson(user)).toList();
+    } else {
+      print("error loading json");
+    }
+  }
+
+  @override
+  void initState() {
+    loadUsers();
+    super.initState();
+  }
 
   clear() {
     _username.clear();
@@ -185,21 +201,11 @@ class _LoginState extends State<Login> {
                                 ),
                                 onPressed: () {
                                   if (_formKey.currentState!.validate()) {
-                                    setState(() {
+                                 
                                       username = _username.text;
                                       password = _password.text;
-                                    });
-                                    String? storedUsers =
-                                        SharedPrefService.getString(
-                                            key: "sign-up");
-                                    if (storedUsers != null &&
-                                        storedUsers.isNotEmpty) {
-                                      List<dynamic> decodedUsers =
-                                          jsonDecode(storedUsers);
-                                      existingUsers = decodedUsers
-                                          .map((jsonUser) =>
-                                              userModel.fromJson(jsonUser))
-                                          .toList();
+                                   
+                              
                                       bool isValid = existingUsers.any((user) =>
                                           user.username == _username.text &&
                                           user.password == _password.text);
@@ -234,7 +240,7 @@ class _LoginState extends State<Login> {
                                               content:
                                                   Text("Login successful")),
                                         );
-                                        clear();
+                                
                                       } else if (wrongPassword) {
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
@@ -259,8 +265,9 @@ class _LoginState extends State<Login> {
                                               content: Text(
                                                   "Try a genuine username and password")),
                                         );
-                                      }
+                                      
                                     }
+                                            clear();
                                   }
                                 },
                                 child: Text("Login",

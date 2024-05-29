@@ -3,6 +3,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:social_app/Screens/edit_profile.dart';
+import 'package:social_app/Screens/upload_post.dart';
+import 'package:social_app/models/postModel.dart';
+
 import 'package:social_app/models/sharedPrefService';
 import 'package:social_app/models/usermodel.dart';
 
@@ -23,6 +26,7 @@ class ProfileTab extends StatefulWidget {
 
 class _ProfileTabState extends State<ProfileTab> {
   List<userModel> existingUsers = [];
+List<PostModel> posts = [];
   Future<void> loadUsers() async {
     String? json = SharedPrefService.getString(key: "sign-up");
     if (json != null && json.isNotEmpty) {
@@ -64,6 +68,9 @@ class _ProfileTabState extends State<ProfileTab> {
             address: "",
             education: "",
             gender: ""));
+
+
+            posts = currentUser.posts!.toList();
 
     print("currentUser is ${currentUser.username}");
     String ppPath = currentUser.profileImagePath.toString();
@@ -140,18 +147,130 @@ class _ProfileTabState extends State<ProfileTab> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => EditProfile(
-                                  updateProfileScreen : (){ updateProfile();},
+                                  updateProfileScreen : (){updateProfile();},
                                     isDark: widget.isDark,
                                     username: currentUser.username,
                                     password: currentUser.password)));
                       },
                       icon: Icon(Icons.person_2_outlined)),
                   trailing: IconButton(
-                      onPressed: () {}, icon: Icon(Icons.add_a_photo)),
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> uploadPosts(
+                          updateProfile : (){updateProfile();},
+                             username: currentUser.username,
+                                    password: currentUser.password
+
+                        )));
+                      }, icon: Icon(Icons.add_a_photo)),
                 ),
-              )
+              ),
+            Expanded(
+              child: ListView.builder(
+                itemCount: posts.length,
+                itemBuilder: (context, index){
+                  final post = posts.reversed.toList()[index];
+                  bool isLiked = post.postLikedBy!= null && post.postLikedBy!.any((user) => user.username == currentUser.username);
+
+return Padding(
+  padding: const EdgeInsets.all(8.0),
+  child: Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  height: height*.5,
+                  width: width *1,
+                  decoration: BoxDecoration(
+                    border: Border.all(),
+                   borderRadius: BorderRadius.circular(20)
+                  ),
+                  child: Card(
+                    color: widget.isDark ? Colors.black : Colors.white,
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                           CircleAvatar(
+                            radius: 23,
+                            backgroundImage: FileImage(File(currentUser.profileImagePath.toString())),),
+                            SizedBox(width: 4,),
+                           Text(post.title.toString(),style: TextStyle(color: widget.isDark ? Colors.white : Colors.black),),
+SizedBox(width: width*.56,),
+                           IconButton(onPressed: (){
+                            setState(() {
+                              currentUser.posts!.remove(post);
+                           
+                            });
+                            SharedPrefService.setString(key: 'sign-up', value: jsonEncode(existingUsers));
+                           }, icon: Icon(Icons.delete,color: Colors.red,))
+                           
+                          ],
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                image: DecorationImage(image: FileImage(File(post.imageUrl.toString())))
+                            
+                                
+                              ),
+                            ),
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            SizedBox(width: 10,),
+                            Align(
+                              alignment: Alignment.bottomLeft,
+                              child: isLiked ? IconButton(onPressed: (){
+                              setState(() {
+                                  post.postLikedBy!.removeWhere((user)=> user.username == currentUser.username);
+
+                              });
+
+                              }, icon: Icon(Icons.thumb_up_alt_outlined, color: Colors.blue,)) : IconButton(onPressed: (){
+                                setState(() {
+                                   post.postLikedBy??= [];
+                                  final postLiked = PostLikedBy(
+                                  username: currentUser.username,
+                                  dateTime: DateTime.now().toString()
+                                
+
+                                );
+post.postLikedBy!.add(postLiked);
+                                });
+SharedPrefService.setString(key: 'sign-up', value: jsonEncode(existingUsers));
+                              }, icon: Icon(Icons.thumb_up_alt_outlined,color: widget.isDark ? Colors.white : Colors.black))  ) ,
+                              Text(post.postLikedBy != null ? post.postLikedBy!.length.toString() : '0',style: TextStyle(fontWeight: FontWeight.w700,color: widget.isDark ? Colors.white : Colors.black)),
+SizedBox(width: width*.03,),
+if(post.postLikedBy != null && post.postLikedBy!.length == 1)
+Text('liked by ${  post.postLikedBy!.last.username.toString() } ',style: TextStyle(fontWeight: FontWeight.w700,color: widget.isDark ? Colors.white : Colors.black),),
+
+if(post.postLikedBy != null && post.postLikedBy!.length > 1)
+Text('liked by ${  post.postLikedBy!.last.username.toString() } and others',style: TextStyle(fontWeight: FontWeight.w700,color: widget.isDark ? Colors.white : Colors.black))
+                          ],
+                        )
+
+                      
+                      ],
+                    ),
+            
+                  ),
+                )
+            
+              ],
+            ),
+          ),
+);
+              
+              }),
+            )
             ],
           ),
         ));
   }
 }
+
+

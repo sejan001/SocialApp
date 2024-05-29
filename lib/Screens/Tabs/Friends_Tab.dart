@@ -9,12 +9,13 @@ import 'package:social_app/models/sharedPrefService';
 import 'package:social_app/models/usermodel.dart';
 
 class Friends extends StatefulWidget {
+  final isDark;
   final currentUsername;
   final currentPassword;
   const Friends({
     super.key,
     this.currentUsername,
-    this.currentPassword,
+    this.currentPassword, this.isDark,
   });
 
   @override
@@ -64,6 +65,7 @@ class _FriendsState extends State<Friends> {
     double width = MediaQuery.sizeOf(context).width * 1;
 
     return Scaffold(
+      backgroundColor: widget.isDark ? Colors.black : Colors.white,
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: SafeArea(

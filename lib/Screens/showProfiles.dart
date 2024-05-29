@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:social_app/models/friendListModel.dart';
+import 'package:social_app/models/postModel.dart';
 
 import 'package:social_app/models/sharedPrefService';
 import 'package:social_app/models/usermodel.dart';
@@ -33,6 +34,7 @@ class Showprofiles extends StatefulWidget {
 class _ShowprofilesState extends State<Showprofiles> {
   List<userModel> existingUsers = [];
   List<FriendModel> friends = [];
+  List<PostModel> posts = [];
 
   Future<void> loadUsers() async {
     try {
@@ -88,6 +90,7 @@ class _ShowprofilesState extends State<Showprofiles> {
             gender: ""));
 
     String ppPath = friendUser.profileImagePath.toString();
+     posts = friendUser.posts!.toList();
 
     sendRequest(userModel currentUser, userModel targetUser) {
       final newFriendReq = FriendModel(
@@ -206,9 +209,110 @@ bool isFriend = (friendUser.friends != null && (friendUser.friends!.contains(cur
                       },
                       icon: Icon(Icons.cancel)),
                 ),
-              )
+              ),
+               Expanded(
+              child: ListView.builder(
+                itemCount: posts.length,
+                itemBuilder: (context, index){
+                  final post = posts.reversed.toList()[index];
+                  bool isLiked = post.postLikedBy!= null && post.postLikedBy!.any((user) => user.username == currentUser.username);
+
+return Padding(
+  padding: const EdgeInsets.all(8.0),
+  child: Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  height: height*.5,
+                  width: width *1,
+                  decoration: BoxDecoration(
+                    border: Border.all(),
+                   borderRadius: BorderRadius.circular(20)
+                  ),
+                  child: Card(
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                           CircleAvatar(
+                            radius: 23,
+                            backgroundImage: FileImage(File(friendUser.profileImagePath.toString())),),
+                            SizedBox(width: 4,),
+                           Text(post.title.toString()),
+                           
+                          ],
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                image: DecorationImage(image: FileImage(File(post.imageUrl.toString())))
+                            
+                                
+                              ),
+                            ),
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            SizedBox(width: 10,),
+                            Align(
+                              alignment: Alignment.bottomLeft,
+                              child: isLiked ? IconButton(onPressed: (){
+                              setState(() {
+                                  post.postLikedBy!.removeWhere((user)=> user.username == currentUser.username);
+
+                              });
+
+                              }, icon: Icon(Icons.thumb_up_alt_outlined, color: Colors.blue,)) : IconButton(onPressed: (){
+                                setState(() {
+                                   post.postLikedBy??= [];
+                                  final postLiked = PostLikedBy(
+                                  username: currentUser.username,
+                                  dateTime: DateTime.now().toString()
+                                
+
+
+                                  
+                                );
+post.postLikedBy!.add(postLiked);
+                                });
+SharedPrefService.setString(key: 'sign-up', value: jsonEncode(existingUsers));
+                              }, icon: Icon(Icons.thumb_up_alt_outlined))  ) ,
+
+                              
+Text(post.postLikedBy != null ? post.postLikedBy!.length.toString() : '0'),
+SizedBox(width: width*.03,),
+if(post.postLikedBy != null && post.postLikedBy!.length == 1)
+Text('liked by ${  post.postLikedBy!.last.username.toString() } ',style: TextStyle(fontWeight: FontWeight.w700),),
+
+if(post.postLikedBy != null && post.postLikedBy!.length > 1)
+Text('liked by ${  post.postLikedBy!.last.username.toString() } and others',style: TextStyle(fontWeight: FontWeight.w700))
+                          ],
+                        )
+
+                      
+                      ],
+                    ),
+            
+                  ),
+                )
+            
+              ],
+            ),
+          ),
+);
+              
+              }),
+            )
             ],
           ),
-        ));
+        )
+            ,
+          )
+        ;
   }
 }

@@ -7,13 +7,15 @@ import 'package:social_app/models/sharedPrefService';
 import 'package:social_app/models/usermodel.dart';
 
 class NotificationTab extends StatefulWidget {
+  final isDark;
+  
   final currentUsername;
   final currentPassword;
 
   const NotificationTab({
     super.key,
     this.currentUsername,
-    this.currentPassword,
+    this.currentPassword, this.isDark,
   });
 
   @override
@@ -77,6 +79,7 @@ class _NotificationTabState extends State<NotificationTab> {
     }
 
     return Scaffold(
+            backgroundColor: widget.isDark ? Colors.black : Colors.white,
       // appBar: AppBar(
       //   backgroundColor: Colors.amber,
       // ),

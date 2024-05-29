@@ -9,13 +9,14 @@ import 'package:social_app/models/sharedPrefService';
 import 'package:social_app/models/usermodel.dart';
 
 class MesssageScreen extends StatefulWidget {
+  final isDark;
   final currentUsername;
   final currentPassword;
 
   const MesssageScreen({
     Key? key,
     required this.currentUsername,
-    required this.currentPassword,
+    required this.currentPassword, this.isDark,
   }) : super(key: key);
 
   @override
@@ -98,6 +99,7 @@ class _MesssageScreenState extends State<MesssageScreen> {
     });
 
     return Scaffold(
+      backgroundColor: widget.isDark ? Colors.black : Colors.white,
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: SafeArea(

@@ -1,5 +1,7 @@
 import 'package:social_app/models/friendListModel.dart';
 import 'package:social_app/models/message_model.dart';
+import 'package:social_app/models/postModel.dart'; 
+
 import 'package:uuid/uuid.dart';
 
 class userModel {
@@ -15,6 +17,7 @@ class userModel {
   List<String>? friends;
   List<FriendModel>? friendList;
   List<Message>? messages;
+  List<PostModel>? posts;
 
   userModel({
     this.id = '',
@@ -29,6 +32,7 @@ class userModel {
     this.friends,
     this.friendList,
     this.messages,
+    this.posts, // Initialize posts
   });
 
   factory userModel.fromJson(Map<String, dynamic> json) {
@@ -41,6 +45,11 @@ class userModel {
     List<Message> messages = messagesFromJson
         .map((messageJson) => Message.fromJson(messageJson))
         .toList();
+
+    var postsFromJson = json['posts'] as List<dynamic>? ?? [];
+    List<PostModel> posts = postsFromJson
+        .map((postJson) => PostModel.fromJson(postJson))
+        .toList(); // Map posts from JSON
 
     return userModel(
       id: json['id'] ?? Uuid().v4(),
@@ -56,6 +65,7 @@ class userModel {
           json['friends'] != null ? List<String>.from(json['friends']) : [],
       friendList: friendList,
       messages: messages,
+      posts: posts, // Assign posts
     );
   }
 
@@ -78,6 +88,9 @@ class userModel {
     if (this.messages != null) {
       data['messages'] =
           this.messages!.map((message) => message.toJson()).toList();
+    }
+    if (this.posts != null) {
+      data['posts'] = this.posts!.map((post) => post!.toJson()).toList();
     }
     return data;
   }
