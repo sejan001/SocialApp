@@ -229,7 +229,7 @@ SizedBox(width: width*.56,),
                                   post.postLikedBy!.removeWhere((user)=> user.username == currentUser.username);
 
                               });
-
+SharedPrefService.setString(key: 'sign-up', value: jsonEncode(existingUsers));
                               }, icon: Icon(Icons.thumb_up_alt_outlined, color: Colors.blue,)) : IconButton(onPressed: (){
                                 setState(() {
                                    post.postLikedBy??= [];
