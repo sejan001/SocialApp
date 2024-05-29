@@ -194,7 +194,8 @@ bool isFriend = (friendUser.friends != null && (friendUser.friends!.contains(cur
                         setState(() {
                           print(isFriend);
                           currentUser.friends = currentUser.friends ?? [];
-                          currentUser.friends!.remove(friendUser.username);
+                          currentUser.friends!.remove(friendUser.username!.toUpperCase());
+                          friendUser.friends!.remove(currentUser.username!.toUpperCase());
                           SharedPrefService.setString(
                             key: "sign-up",
                             value: jsonEncode(existingUsers),
