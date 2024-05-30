@@ -14,15 +14,14 @@ class SharedPrefService {
   static String? getString({required String key}) {
     return pref?.getString(key);
   }
-static Bool? getBool ({required String key}){
-  return pref?.getBool(key);
 
-}
-static Bool? setBool ({required String key , required Bool value}){
-  pref?.setBool(key,value);
-}
+  static bool? getBool({required String key}) {
+    return pref?.getBool(key);
+  }
 
-  
+  static void setBool({required String key, required bool value}) {
+    pref?.setBool(key, value);
+  }
 
   static Future<void> clearDataForKey(String key) async {
     await pref?.remove(key);

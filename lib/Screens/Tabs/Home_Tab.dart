@@ -55,7 +55,7 @@ class _HomeTabState extends State<HomeTab> {
   }
     @override
   void initState() {
-    loadPosts();
+   
 loadUsers();
     super.initState();
   }
