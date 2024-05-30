@@ -309,6 +309,7 @@ class _SignUpState extends State<SignUp> {
                                 if (_formKey.currentState!.validate()) {
                                   String name2 = _username.text.toUpperCase();
                                   // SharedPrefService.clearSignUpData();
+                                  // SharedPrefService.pref!.remove('sign-up');
 
                                   userModel user = userModel(
                                       id: uuid.v4(),
