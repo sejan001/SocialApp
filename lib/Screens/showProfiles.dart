@@ -117,7 +117,8 @@ friendUser.friends = friendUser.friends ?? [];
 bool isFriend = (friendUser.friends != null && (friendUser.friends!.contains(currentUser.username!.toUpperCase()) || friendUser.friends!.contains(username.toUpperCase())));
 
     return Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(backgroundColor: widget.isDark? Colors.black : Colors.white,
+        iconTheme: IconThemeData(color: widget.isDark? Colors.white : Colors.black),),
         backgroundColor: widget.isDark ? Colors.black : Colors.white,
         body: Padding(
           padding: const EdgeInsets.all(8.0),

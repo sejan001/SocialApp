@@ -114,8 +114,10 @@ loadUsers();
                       radius: 23,
                       backgroundImage: FileImage(File(postUser.profileImagePath.toString())),),
                       SizedBox(width: 5,),
-                    Text('@ ${postUser.username.toString()}',style: TextStyle(color: widget.isDark ? Colors.white : Colors.black,fontWeight: FontWeight.w700,fontSize: 17),)
-                     
+                    Text('@ ${postUser.username.toString()}',style: TextStyle(color: widget.isDark ? Colors.white : Colors.black,fontWeight: FontWeight.w700,fontSize: 17),),
+                     SizedBox(width: 95,),
+                     Text(post.createdAt.toString(),style: TextStyle(color: widget.isDark ? Colors.white : Colors.black,fontWeight: FontWeight.w600),),
+                     SizedBox.shrink(),
                     ],
                   ),
                    Padding(

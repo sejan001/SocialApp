@@ -14,6 +14,13 @@ class SharedPrefService {
   static String? getString({required String key}) {
     return pref?.getString(key);
   }
+static Bool? getBool ({required String key}){
+  return pref?.getBool(key);
+
+}
+static Bool? setBool ({required String key , required Bool value}){
+  pref?.setBool(key,value);
+}
 
   
 

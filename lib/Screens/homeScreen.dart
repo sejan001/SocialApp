@@ -194,7 +194,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Text(
                       "Logout",
                       style: TextStyle(
-                          color: isDark ? Colors.white : Colors.black),
+                          color: isDark ? Colors.black : Colors.green),
                     ))
               ],
             ),

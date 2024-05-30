@@ -78,11 +78,13 @@ class _FriendsState extends State<Friends> {
                     Container(
                         width: width * .5,
                         child: TextField(
+                          style: TextStyle(color:  widget.isDark ? Colors.white : Colors.black,),
                           onChanged: (value) {
                             _search();
                           },
                           controller: _friends,
                           decoration: InputDecoration(
+                            hintStyle: TextStyle(color:  widget.isDark ? Colors.white : Colors.black,),
                               hintText: "Search username",
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(20))),
@@ -94,7 +96,7 @@ class _FriendsState extends State<Friends> {
                         onPressed: () {
                           _search();
                         },
-                        icon: Icon(Icons.search)),
+                        icon: Icon(Icons.search,color:  widget.isDark ? Colors.white : Colors.black,)),
                     SizedBox(
                       width: 10,
                     ),
@@ -104,12 +106,13 @@ class _FriendsState extends State<Friends> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) => FriendList(
+                                    isDark : widget.isDark,
                                         
                                         currentUsername: widget.currentUsername,
                                         currentPassword: widget.currentPassword,
                                       )));
                         },
-                        icon: Icon(Icons.people_alt))
+                        icon: Icon(Icons.people_alt,color:  widget.isDark ? Colors.white : Colors.black,))
                   ],
                 ),
                 SizedBox(
@@ -119,8 +122,8 @@ class _FriendsState extends State<Friends> {
                   child: searchedUsers.isEmpty
                       ? Center(
                           child: _friends.text.isEmpty
-                              ? Text("Search for Users")
-                              : Text("No Users found"),
+                              ? Text("Search for Users",style: TextStyle(color: widget.isDark ? Colors.white : Colors.black),)
+                              : Text("No Users found",style: TextStyle(color: widget.isDark ? Colors.white : Colors.black)),
                         )
                       : ListView.builder(
                           itemCount: searchedUsers.length,
@@ -141,7 +144,7 @@ class _FriendsState extends State<Friends> {
                                                 currentPassword:
                                                     widget.currentPassword,
                                                 targetUser: user,
-                                                isDark: false,
+                                                isDark: widget.isDark,
                                                 friendPassword: user.password,
                                                 friendUsername: user.username,
                                                

@@ -24,7 +24,8 @@ void main() {
 }
 
 class Login extends StatefulWidget {
-  const Login({super.key, required bool isDark});
+  final isDark;
+  const Login({super.key,this.isDark});
 
   @override
   State<Login> createState() => _LoginState();
@@ -75,12 +76,13 @@ class _LoginState extends State<Login> {
     final width = MediaQuery.sizeOf(context).width * 1;
 
     return Scaffold(
-      backgroundColor: isDark ? Colors.black : Colors.white,
+      backgroundColor: widget.isDark ? Colors.black : Colors.white,
       appBar: AppBar(
+        
         iconTheme: IconThemeData(
           color: isDark ? Colors.white : Colors.black,
         ),
-        backgroundColor: isDark ? Colors.black : Colors.white,
+        backgroundColor: widget.isDark ? Colors.black : Colors.white,
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -119,7 +121,7 @@ class _LoginState extends State<Login> {
                           width: width * .7,
                           child: TextFormField(
                             style: TextStyle(
-                              color: isDark ? Colors.white : Colors.black,
+                              color: widget.isDark ? Colors.white : Colors.black,
                               fontSize: 18,
                             ),
                             validator: (value) {
@@ -133,16 +135,16 @@ class _LoginState extends State<Login> {
                             controller: _username,
                             decoration: InputDecoration(
                                 suffix: IconButton(
-                                    color: isDark ? Colors.white : Colors.black,
+                                    color: widget.isDark ? Colors.white : Colors.black,
                                     onPressed: null,
                                     icon: Icon(null)),
                                 hintText: "Username",
                                 hintStyle: TextStyle(
-                                  color: isDark ? Colors.white : Colors.black,
+                                  color: widget.isDark ? Colors.white : Colors.black,
                                   fontSize: 18,
                                 ),
                                 labelStyle: TextStyle(
-                                  color: isDark ? Colors.white : Colors.black,
+                                  color: widget.isDark ? Colors.white : Colors.black,
                                   fontSize: 18,
                                 ),
                                 labelText: "Enter  Username"),
@@ -153,7 +155,7 @@ class _LoginState extends State<Login> {
                           width: width * .7,
                           child: TextFormField(
                             style: TextStyle(
-                              color: isDark ? Colors.white : Colors.black,
+                              color: widget.isDark ? Colors.white : Colors.black,
                               fontSize: 18,
                             ),
                             obscureText: _showPass,
@@ -169,7 +171,7 @@ class _LoginState extends State<Login> {
                             decoration: InputDecoration(
                                 suffixIconColor: Colors.blue,
                                 suffix: IconButton(
-                                    color: isDark ? Colors.white : Colors.black,
+                                    color: widget.isDark ? Colors.white : Colors.black,
                                     onPressed: () {
                                       setState(() {
                                         _showPass = !_showPass;
@@ -178,11 +180,11 @@ class _LoginState extends State<Login> {
                                     icon: Icon(Icons.remove_red_eye)),
                                 hintText: "Password",
                                 hintStyle: TextStyle(
-                                  color: isDark ? Colors.white : Colors.black,
+                                  color: widget.isDark ? Colors.white : Colors.black,
                                   fontSize: 18,
                                 ),
                                 labelStyle: TextStyle(
-                                  color: isDark ? Colors.white : Colors.black,
+                                  color: widget.isDark ? Colors.white : Colors.black,
                                   fontSize: 18,
                                 ),
                                 labelText: "Enter Password"),
@@ -229,9 +231,10 @@ class _LoginState extends State<Login> {
                                                     HomeScreen(
                                                       UserName: username,
                                                       Pass: password,
-                                                      isDark: false,
+                                                      isDark: widget.isDark ,
                                                     ))));
                                         ;
+                                        
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
                                           SnackBar(
@@ -290,7 +293,7 @@ class _LoginState extends State<Login> {
                                           context,
                                           MaterialPageRoute(
                                               builder: ((context) =>
-                                                  SignUp(isDark: isDark))));
+                                                  SignUp(isDark: widget.isDark))));
                                     },
                                     child: Text("Don't have an account",
                                         style: GoogleFonts.getFont('Roboto',
@@ -308,7 +311,7 @@ class _LoginState extends State<Login> {
                                           MaterialPageRoute(
                                               builder: ((context) =>
                                                   ForgotPassword(
-                                                    isDark: isDark,
+                                                    isDark: widget.isDark,
                                                   ))));
                                     },
                                     child: Text("Forgot Password",

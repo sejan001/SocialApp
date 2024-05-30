@@ -64,6 +64,7 @@ loadUsers();
             profileImagePath: "profileImagePath"));
             print('ma is $currentUser');
     return Scaffold(
+      appBar: AppBar(),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Center(

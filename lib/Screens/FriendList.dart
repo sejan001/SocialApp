@@ -9,11 +9,11 @@ import 'package:social_app/models/usermodel.dart';
 import 'package:uuid/uuid.dart';
 
 class FriendList extends StatefulWidget {
-  
+  final isDark;
   final currentUsername;
   final currentPassword;
   const FriendList(
-      {super.key, this.currentUsername, this.currentPassword});
+      {super.key, this.currentUsername, this.currentPassword, this.isDark});
 
   @override
   State<FriendList> createState() => _FriendListState();
@@ -61,13 +61,16 @@ class _FriendListState extends State<FriendList> {
     }
     print("saathis are $currentUserFriends");
     return Scaffold(
-      appBar: AppBar(),
+      
+      backgroundColor: widget.isDark? Colors.black : Colors.white,
+      appBar: AppBar(iconTheme: IconThemeData(color: widget.isDark? Colors.white : Colors.black, ),
+      backgroundColor: widget.isDark? Colors.black : Colors.white,),
       body: currentUserFriends.isEmpty
           ? Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text("You don't have any friends"),
+                Text("You don't have any friends",style: TextStyle(color:  widget.isDark? Colors.white : Colors.black),),
                   const SizedBox(height: 16),
                 ],
               ),
