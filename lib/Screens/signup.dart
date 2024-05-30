@@ -308,6 +308,7 @@ class _SignUpState extends State<SignUp> {
                               onPressed: () {
                                 if (_formKey.currentState!.validate()) {
                                   String name2 = _username.text.toUpperCase();
+                                  // SharedPrefService.clearSignUpData();
 
                                   userModel user = userModel(
                                       id: uuid.v4(),
@@ -343,9 +344,7 @@ class _SignUpState extends State<SignUp> {
                                   } else {
                                     setState(() {
                                       _showLoader = true;
-                                    });
-
-                                    newUser.add(user);
+                                                                          newUser.add(user);
                                     String? encodeJson = jsonEncode(newUser
                                         .map((user) => user.toJson())
                                         .toList());
@@ -353,7 +352,11 @@ class _SignUpState extends State<SignUp> {
                                       key: "sign-up",
                                       value: encodeJson,
                                     );
+                                    
+
                                     print(encodeJson);
+                                    });
+
                                     Timer(Duration(seconds: 2), () {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(SnackBar(
@@ -364,7 +367,7 @@ class _SignUpState extends State<SignUp> {
                                       Navigator.pop(context);
                                     });
 
-                                    // log(existingUsers ?? '');
+                                    log(existingUsers ?? '');
                                     print(user.username);
                                     print(user.id);
                                     print(user.password);

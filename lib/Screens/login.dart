@@ -45,14 +45,7 @@ class _LoginState extends State<Login> {
 
   bool isDark = false;
   Future<void> loadUsers() async {
-    String? json = SharedPrefService.getString(key: "sign-up");
-    if (json != null && json.isNotEmpty) {
-      List<dynamic> jsonUsers = jsonDecode(json);
-      existingUsers =
-          jsonUsers.map((user) => userModel.fromJson(user)).toList();
-    } else {
-      print("error loading json");
-    }
+   
   }
 
   @override
@@ -206,7 +199,14 @@ class _LoginState extends State<Login> {
                                  
                                       username = _username.text;
                                       password = _password.text;
-                                   
+                                    String? json = SharedPrefService.getString(key:"sign-up");
+    if (json != null && json.isNotEmpty) {
+      List<dynamic> jsonUsers = jsonDecode(json);
+      existingUsers =
+          jsonUsers.map((user) => userModel.fromJson(user)).toList();
+    } else {
+      print("error loading json");
+    }
                               
                                       bool isValid = existingUsers.any((user) =>
                                           user.username == _username.text &&
@@ -241,6 +241,7 @@ class _LoginState extends State<Login> {
                                               backgroundColor: Color.fromARGB(
                                                   255, 21, 236, 67),
                                               content:
+                                              
                                                   Text("Login successful")),
                                         );
                                 
