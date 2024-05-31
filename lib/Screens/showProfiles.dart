@@ -186,13 +186,24 @@ bool isFriend = (friendUser.friends != null && (friendUser.friends!.contains(cur
                   leading: isFriend
                       ? Icon((Icons.person), color: Colors.green)
                       : IconButton(
+                    tooltip: 'Add Friend',
+
                           onPressed: () {
+
                             sendRequest(currentUser, friendUser);
                           },
-                          icon: Icon(Icons.add)),
+                          icon: Icon(Icons.person_add)),
                   trailing: IconButton(
+                    tooltip: 'Unfriend',
                       onPressed: () {
-                        setState(() {
+                        if(!isFriend){
+                           ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            backgroundColor: Colors.red,
+                            content: Text("Add friend First"),
+                          ));
+
+                        } else { setState(() {
                           print(isFriend);
                           currentUser.friends = currentUser.friends ?? [];
                           currentUser.friends!.remove(friendUser.username!.toUpperCase());
@@ -208,8 +219,12 @@ bool isFriend = (friendUser.friends != null && (friendUser.friends!.contains(cur
                             content: Text("Removed Friend"),
                           ),
                         );
+
+
+                        }
+                       
                       },
-                      icon: Icon(Icons.cancel)),
+                      icon: Icon(Icons.person_off)),
                 ),
               ),
                Expanded(

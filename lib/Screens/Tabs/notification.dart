@@ -86,7 +86,7 @@ class _NotificationTabState extends State<NotificationTab> {
       body: Column(
         children: [
           Expanded(
-            child: ListView.builder(
+            child: friendNotification.isEmpty ? Center(child: Text('No new notifications'),) : ListView.builder(
                 itemCount: friendNotification.length,
                 itemBuilder: (context, index) {
                   final currentNotifi =

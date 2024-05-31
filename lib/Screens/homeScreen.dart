@@ -192,6 +192,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           MaterialPageRoute(
                               builder: (context) => Login(isDark: isDark)));
                                SharedPrefService.pref!.remove('isLogged');
+                               SharedPrefService.pref!.remove('username');
+                               SharedPrefService.pref!.remove('password');
                     },
                     child: Text(
                       "Logout",
@@ -220,7 +222,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 bottom: TabBar(
                   tabs: [
                     Tab(
-                        icon: Icon(Icons.person,
+                        icon: Icon(
+                          Icons.person,
                             color: isDark ? Colors.white : Colors.black)),
                     Tab(
                         icon: Icon(

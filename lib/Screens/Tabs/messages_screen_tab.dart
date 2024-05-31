@@ -102,7 +102,7 @@ class _MesssageScreenState extends State<MesssageScreen> {
       backgroundColor: widget.isDark ? Colors.black : Colors.white,
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: SafeArea(
+        child: groupedMessages.isEmpty ? Center(child: Text('No Messages'),): SafeArea(
           child: Center(
             child: Column(
               children: [

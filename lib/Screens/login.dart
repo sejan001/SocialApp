@@ -49,7 +49,9 @@ class _LoginState extends State<Login> {
     bool? isLoggeD = SharedPrefService.getBool(key: 'isLogged');
     var username = SharedPrefService.getString(key: 'username');
     var password = SharedPrefService.getString(key: 'password');
+    
     if (isLoggeD == true) {
+
     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> HomeScreen(UserName: username.toString(), Pass: password.toString(), isDark: isDark)));
 
       
@@ -65,9 +67,10 @@ class _LoginState extends State<Login> {
 
   @override
   void initState() {
+        checlkLog();
   
     super.initState();
-    checlkLog();
+
       loadUsers();
   }
 

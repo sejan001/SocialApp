@@ -142,6 +142,7 @@ List<PostModel> posts = [];
                 child: ListTile(
                   iconColor: widget.isDark ? Colors.white : Colors.black,
                   leading: IconButton(
+                    tooltip: 'Edit Profile',
                       onPressed: () {
                         Navigator.push(
                             context,
@@ -154,9 +155,11 @@ List<PostModel> posts = [];
                       },
                       icon: Icon(Icons.person_2_outlined)),
                   trailing: IconButton(
+                    tooltip: 'Upload Posts',
                       onPressed: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context)=> uploadPosts(
                           updateProfile : (){updateProfile();},
+                          isDark: widget.isDark,
                              username: currentUser.username,
                                     password: currentUser.password
 
@@ -196,13 +199,17 @@ return Padding(
                             SizedBox(width: 4,),
                            Text(post.title.toString(),style: TextStyle(color: widget.isDark ? Colors.white : Colors.black),),
 SizedBox(width: width*.56,),
-                           IconButton(onPressed: (){
+                           IconButton(
+                            tooltip: 'Delete this post',
+                            onPressed: (){
                             setState(() {
                               currentUser.posts!.remove(post);
                            
                             });
                             SharedPrefService.setString(key: 'sign-up', value: jsonEncode(existingUsers));
-                           }, icon: Icon(Icons.delete,color: Colors.red,))
+                           }, icon: Icon(
+                            
+                            Icons.delete,color: Colors.red,))
                            
                           ],
                         ),

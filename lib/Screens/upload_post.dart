@@ -12,8 +12,9 @@ import 'package:uuid/uuid.dart';
 class uploadPosts extends StatefulWidget {
   final  username;
   final password;
+  final isDark;
 final VoidCallback updateProfile;
-  const uploadPosts({super.key, this.username, this.password, required this.updateProfile});
+  const uploadPosts({super.key, this.username, this.password, required this.updateProfile, this.isDark});
 
   @override
   State<uploadPosts> createState() => _uploadPostsState();
@@ -63,6 +64,9 @@ loadUsers();
             password: "password",
             profileImagePath: "profileImagePath"));
             print('ma is $currentUser');
+
+            currentUser.posts = currentUser.posts ?? [];
+
     return Scaffold(
       appBar: AppBar(),
       body: Padding(
@@ -155,6 +159,17 @@ loadUsers();
                   ),
           
                 ),
+              ),
+              Text('Your Posts',style: TextStyle(color: widget.isDark ? Colors.white : Colors.black),),
+              Expanded(
+                child: GridView.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3,),
+                itemCount: currentUser.posts!.length,
+                 itemBuilder: (context,index){
+                
+                 return Container(
+                  decoration: BoxDecoration(image: DecorationImage(image: FileImage(File(currentUser.posts![index].imageUrl.toString())),fit: BoxFit.cover)),
+                 );
+                }),
               )
           
             ],

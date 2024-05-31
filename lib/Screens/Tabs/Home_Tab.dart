@@ -68,12 +68,13 @@ loadUsers();
     Color buttonColor = Colors.grey;
     List<PostModel> allPosts = existingUsers.expand((user)=> user.posts!).toList();
     List <PostModel> randomPost = List.from(allPosts)..shuffle(Random());
+    
 
     return Scaffold(
       backgroundColor: widget.isDark ? Colors.black : Colors.white,
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child:   ListView.builder(
+        child: randomPost.isEmpty ?  Center(child: Text('No posts'),) : ListView.builder(
           itemCount: allPosts.length,
           itemBuilder: (context, index){
            final post = allPosts.reversed.toList()[index];
@@ -87,7 +88,7 @@ loadUsers();
                     password: "",
                     profileImagePath: ""));
              bool isLiked = post.postLikedBy!= null && post.postLikedBy!.any((user) => user.username == currentUser.username);
-        
+       
            
         print('title is ${post.title}');
         print('ma isss ${currentUser.username}');
