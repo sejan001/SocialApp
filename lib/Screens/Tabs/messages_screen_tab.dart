@@ -172,8 +172,10 @@ if (friendUser.messages!.where((message)=>  (message.senderUsername == currentUs
                           ),
                         ),
                       );
+                      
   
-}
+                  }
+
                     
                     ,
                   ),

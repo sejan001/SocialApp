@@ -186,10 +186,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 ElevatedButton(
                     onPressed: () {
+                     
                       Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                               builder: (context) => Login(isDark: isDark)));
+                               SharedPrefService.pref!.remove('isLogged');
                     },
                     child: Text(
                       "Logout",

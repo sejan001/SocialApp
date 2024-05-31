@@ -44,14 +44,31 @@ class _LoginState extends State<Login> {
   ];
 
   bool isDark = false;
+
+  Future <void> checlkLog() async{
+    bool? isLoggeD = SharedPrefService.getBool(key: 'isLogged');
+    var username = SharedPrefService.getString(key: 'username');
+    var password = SharedPrefService.getString(key: 'password');
+    if (isLoggeD == true) {
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> HomeScreen(UserName: username.toString(), Pass: password.toString(), isDark: isDark)));
+
+      
+    }
+    else{
+      print('navigaton ma errorr ayo');
+    }
+
+  }
   Future<void> loadUsers() async {
    
   }
 
   @override
   void initState() {
-    loadUsers();
+  
     super.initState();
+    checlkLog();
+      loadUsers();
   }
 
   clear() {
@@ -199,15 +216,17 @@ class _LoginState extends State<Login> {
                                  
                                       username = _username.text;
                                       password = _password.text;
-                                    String? json = SharedPrefService.getString(key:"sign-up");
+                                      try {
+                                                                     String? json = SharedPrefService.getString(key:"sign-up");
     if (json != null && json.isNotEmpty) {
       List<dynamic> jsonUsers = jsonDecode(json);
       existingUsers =
           jsonUsers.map((user) => userModel.fromJson(user)).toList();
-    } else {
-      print("error loading json");
-    }
-                              
+    }       
+                                      } catch (e) { print('error ho thiw $e');
+                                        
+                                      }
+                        
                                       bool isValid = existingUsers.any((user) =>
                                           user.username == _username.text &&
                                           user.password == _password.text);
@@ -234,7 +253,10 @@ class _LoginState extends State<Login> {
                                                       isDark: widget.isDark ,
                                                     ))));
                                         ;
-                                        
+                                        SharedPrefService.setBool(key: 'isLogged', value: true);
+                                        SharedPrefService.setString(key: 'username', value: _username.text);
+                                        SharedPrefService.setString(key: 'password', value: _password.text);
+
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
                                           SnackBar(

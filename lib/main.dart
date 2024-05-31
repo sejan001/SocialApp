@@ -1,24 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:social_app/Screens/FriendList.dart';
-import 'package:social_app/Screens/Tabs/Friends_Tab.dart';
-import 'package:social_app/Screens/Tabs/Home_Tab.dart';
-import 'package:social_app/Screens/Tabs/notification.dart';
-import 'package:social_app/Screens/Tabs/profile_tab.dart';
-import 'package:social_app/Screens/edit_profile.dart';
-import 'package:social_app/Screens/homeScreen.dart';
-import 'package:social_app/Screens/internet.dart';
+
 
 import 'package:social_app/Screens/login.dart';
-import 'package:social_app/Screens/message_see.dart';
+import 'package:social_app/Screens/splashScreen.dart';
 
-import 'package:social_app/Screens/showProfiles.dart';
-import 'package:social_app/Screens/signup.dart';
 
 import 'package:social_app/models/sharedPrefService';
 
-void main() {
-  SharedPrefService.init();
-  WidgetsFlutterBinding();
+Future<void> main() async {
+
+  WidgetsFlutterBinding.ensureInitialized();
+  await SharedPrefService.init();
   runApp(const MyApp());
 }
 
@@ -52,6 +44,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false, home: Login(isDark: false));
+        debugShowCheckedModeBanner: false, home: SplashScreen());
   }
 }
