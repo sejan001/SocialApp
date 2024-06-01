@@ -11,6 +11,7 @@ import 'package:social_app/models/usermodel.dart';
 class Showprofiles extends StatefulWidget {
   final friendUsername;
   final friendPassword;
+  final isGuest;
 
 
   final isDark;
@@ -23,7 +24,7 @@ class Showprofiles extends StatefulWidget {
     this.isDark,
     this.targetUser,
     this.currentUsername,
-    this.currentPassword, this.friendUsername, this.friendPassword,
+    this.currentPassword, this.friendUsername, this.friendPassword, this.isGuest,
  
   }) : super(key: key);
 
@@ -72,22 +73,36 @@ class _ShowprofilesState extends State<Showprofiles> {
         (user) =>
             user.username == widget.currentUsername &&
             user.password == widget.currentPassword,
-        orElse: () => userModel(
+         orElse: () => userModel(
+          id: '',
+          name: '',
             username: " username",
             password: "password",
-            profileImagePath: "profileImagePath",
+            profileImagePath: "",
+            coverImagePath: '',
             address: "",
             education: "",
-            gender: ""));
+            messages: [],
+            posts: [],
+            friendList: [],
+            friends: [],
+            gender: ""),);
     final friendUser = existingUsers.firstWhere(
         (user) => user.username == username && user.password == password,
-        orElse: () => userModel(
+ orElse: () => userModel(
+          id: '',
+          name: '',
             username: " username",
             password: "password",
-            profileImagePath: "profileImagePath",
+            profileImagePath: "",
+            coverImagePath: '',
             address: "",
             education: "",
-            gender: ""));
+            messages: [],
+            posts: [],
+            friendList: [],
+            friends: [],
+            gender: ""),);
 
     String ppPath = friendUser.profileImagePath.toString();
      posts = friendUser.posts!.toList();
@@ -115,6 +130,7 @@ class _ShowprofilesState extends State<Showprofiles> {
     currentUser.friends = currentUser.friends ?? [];
 friendUser.friends = friendUser.friends ?? [];
 bool isFriend = (friendUser.friends != null && (friendUser.friends!.contains(currentUser.username!.toUpperCase()) || friendUser.friends!.contains(username.toUpperCase())));
+bool sent = true;
 
     return Scaffold(
         appBar: AppBar(backgroundColor: widget.isDark? Colors.black : Colors.white,
@@ -189,10 +205,23 @@ bool isFriend = (friendUser.friends != null && (friendUser.friends!.contains(cur
                     tooltip: 'Add Friend',
 
                           onPressed: () {
+                            if (widget.isGuest) {
+                               ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            backgroundColor: Colors.red,
+                            content: Text("Login to add friends"),
+                          ));
+                              
+                            }
 
-                            sendRequest(currentUser, friendUser);
+                            else{
+                               sendRequest(currentUser, friendUser);
+
+                            }
+
+                           
                           },
-                          icon: Icon(Icons.person_add)),
+                          icon:  Icon(Icons.person_add)),
                   trailing: IconButton(
                     tooltip: 'Unfriend',
                       onPressed: () {
@@ -285,7 +314,15 @@ return Padding(
                               });
 
                               }, icon: Icon(Icons.thumb_up_alt_outlined, color: Colors.blue,)) : IconButton(onPressed: (){
-                                setState(() {
+                                if (widget.isGuest) {
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            backgroundColor: Colors.red,
+                            content: Text('Login first to upload posts')));
+
+
+                          
+                        } else {
+                          setState(() {
                                    post.postLikedBy??= [];
                                   final postLiked = PostLikedBy(
                                   username: currentUser.username,
@@ -298,6 +335,8 @@ return Padding(
 post.postLikedBy!.add(postLiked);
                                 });
 SharedPrefService.setString(key: 'sign-up', value: jsonEncode(existingUsers));
+                        }
+                                
                               }, icon: Icon(Icons.thumb_up_alt_outlined))  ) ,
 
                               

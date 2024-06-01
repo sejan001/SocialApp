@@ -12,8 +12,9 @@ class FriendList extends StatefulWidget {
   final isDark;
   final currentUsername;
   final currentPassword;
+  final isGuest;
   const FriendList(
-      {super.key, this.currentUsername, this.currentPassword, this.isDark});
+      {super.key, this.currentUsername, this.currentPassword, this.isDark, this.isGuest});
 
   @override
   State<FriendList> createState() => _FriendListState();
@@ -89,6 +90,7 @@ class _FriendListState extends State<FriendList> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => Showprofiles(
+                                isGuest: widget.isGuest,
                                   isDark: false,
                                   currentUsername: currentuser.username,
 

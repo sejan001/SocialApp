@@ -56,12 +56,19 @@ class _NotificationTabState extends State<NotificationTab> {
             user.username == widget.currentUsername &&
             user.password == widget.currentPassword,
         orElse: () => userModel(
+          id: '',
+          name: '',
             username: " username",
             password: "password",
             profileImagePath: "profileImagePath",
+            coverImagePath: '',
             address: "",
             education: "",
-            gender: ""));
+            messages: [],
+            posts: [],
+            friendList: [],
+            friends: [],
+            gender: ""),);
 
     if (currentUser.friendList!.isNotEmpty) {
       friendNotification = currentUser.friendList!

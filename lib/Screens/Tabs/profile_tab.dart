@@ -12,12 +12,13 @@ import 'package:social_app/models/usermodel.dart';
 class ProfileTab extends StatefulWidget {
   final String username;
   final String password;
+  final isGuest;
   final isDark;
   ProfileTab({
     Key? key,
     required this.username,
     required this.password,
-    this.isDark,
+    this.isDark, this.isGuest,
   }) : super(key: key);
 
   @override
@@ -62,12 +63,20 @@ List<PostModel> posts = [];
     final currentUser = existingUsers.firstWhere(
         (user) => user.username == username && user.password == password,
         orElse: () => userModel(
+          id: '',
+          name: '',
             username: " username",
             password: "password",
             profileImagePath: "profileImagePath",
+            coverImagePath: '',
             address: "",
             education: "",
-            gender: ""));
+            messages: [],
+            posts: [],
+            friendList: [],
+            friends: [],
+            gender: ""),
+            );
 
 
             posts = currentUser.posts!.toList();
@@ -144,7 +153,16 @@ List<PostModel> posts = [];
                   leading: IconButton(
                     tooltip: 'Edit Profile',
                       onPressed: () {
-                        Navigator.push(
+                        if (widget.isGuest) {
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            backgroundColor: Colors.red,
+                            content: Text('Login first to Edit profile')));
+
+
+                          
+                        }
+                        else {
+                           Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => EditProfile(
@@ -152,18 +170,31 @@ List<PostModel> posts = [];
                                     isDark: widget.isDark,
                                     username: currentUser.username,
                                     password: currentUser.password)));
+
+                        }
                       },
                       icon: Icon(Icons.person_2_outlined)),
                   trailing: IconButton(
                     tooltip: 'Upload Posts',
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> uploadPosts(
+                        if (widget.isGuest) {
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            backgroundColor: Colors.red,
+                            content: Text('Login first to upload posts')));
+
+
+                          
+                        }
+                        else{
+                           Navigator.push(context, MaterialPageRoute(builder: (context)=> uploadPosts(
                           updateProfile : (){updateProfile();},
                           isDark: widget.isDark,
                              username: currentUser.username,
                                     password: currentUser.password
 
                         )));
+                        }
+                       
                       }, icon: Icon(Icons.add_a_photo)),
                 ),
               ),

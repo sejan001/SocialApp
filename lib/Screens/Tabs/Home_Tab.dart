@@ -12,11 +12,12 @@ class HomeTab extends StatefulWidget {
   final UserName;
   final Pass;
   final bool isDark;
+  final isGuest;
   HomeTab({
     super.key,
     this.UserName,
     this.Pass,
-    required this.isDark,
+    required this.isDark, this.isGuest,
   });
 
   @override
@@ -29,20 +30,6 @@ class _HomeTabState extends State<HomeTab> {
 
 
 
-  Future<void> loadPosts() async {
-    try {
-      String json = await rootBundle.loadString("lib/assets/post_details.json");
-      List<dynamic> jsonList = jsonDecode(json);
-      List<PostModel> Posts =
-          jsonList.map((Posts) => PostModel.fromJson(Posts)).toList();
-      print(Posts.first);
-      setState(() {
-        posts = Posts;
-      });
-    } catch (e) {
-      print("Error is $e");
-    }
-  }
     Future<void> loadUsers() async {
     String? json = SharedPrefService.getString(key: "sign-up");
     if (json != null && json.isNotEmpty) {
@@ -152,7 +139,16 @@ loadUsers();
                         });
         
                         }, icon: Icon(Icons.thumb_up_alt_outlined, color: Colors.blue,)) : IconButton(onPressed: (){
-                          setState(() {
+                               if (widget.isGuest) {
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            backgroundColor: Colors.red,
+                            content: Text('Login first to interact with posts')));
+
+
+                          
+                        }
+                          else {
+                            setState(() {
                              post.postLikedBy??= [];
                             final postLiked = PostLikedBy(
                             username: currentUser.username,
@@ -165,6 +161,7 @@ loadUsers();
         post.postLikedBy!.add(postLiked);
                           });
         SharedPrefService.setString(key: 'sign-up', value: jsonEncode(existingUsers));
+                          }
                         }, icon: Icon(Icons.thumb_up_alt_outlined))  ) ,
         
                         

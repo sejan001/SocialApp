@@ -186,6 +186,7 @@ class _SignUpState extends State<SignUp> {
                                     Align(
                                         alignment: Alignment.bottomRight,
                                         child: IconButton(
+                                          tooltip: 'Choose Cover Image',
                                             onPressed: () {
                                               galleryImagePickerCover();
                                             },
@@ -199,6 +200,7 @@ class _SignUpState extends State<SignUp> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               IconButton(
+                                tooltip: 'Choose profile from Gallery',
                                   onPressed: (() {
                                     galleryImagePicker();
                                   }),
@@ -208,6 +210,7 @@ class _SignUpState extends State<SignUp> {
                                 width: width * .1,
                               ),
                               IconButton(
+                                tooltip: 'Capture profile image  from camera',
                                 onPressed: (() {
                                   CameraImagePicker();
                                 }),
@@ -272,7 +275,7 @@ class _SignUpState extends State<SignUp> {
                                       onPressed: () {
                                         setState(() {
                                           _showPass = !_showPass;
-                                          clearData();
+                                          // clearData();
                                         });
                                       },
                                       icon: Icon(Icons.remove_red_eye)),

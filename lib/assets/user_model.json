@@ -1,62 +1,62 @@
 [
   {
-    "id": null,
-    "name": "",
-    "email": "",
-    "password": ""
+    "id": 1,
+    "name": "John Doe",
+    "username": "johndoe",
+    "password": "password123"
   },
   {
-    "id": null,
-    "name": "",
-    "email": "",
-    "password": ""
+    "id": 2,
+    "name": "Jane Smith",
+    "username": "janesmith",
+    "password": "qwerty456"
   },
   {
-    "id": null,
-    "name": "",
-    "email": "",
-    "password": ""
+    "id": 3,
+    "name": "Michael Johnson",
+    "username": "mjohnson",
+    "password": "letmein789"
   },
   {
-    "id": null,
-    "name": "",
-    "email": "",
-    "password": ""
+    "id": 4,
+    "name": "Emily Davis",
+    "username": "emilydavis",
+    "password": "password789"
   },
   {
-    "id": null,
-    "name": "",
-    "email": "",
-    "password": ""
+    "id": 5,
+    "name": "David Wilson",
+    "username": "davidw",
+    "password": "wilson123"
   },
   {
-    "id": null,
-    "name": "",
-    "email": "",
-    "password": ""
+    "id": 6,
+    "name": "Sarah Thompson",
+    "username": "saraht",
+    "password": "thompson456"
   },
   {
-    "id": null,
-    "name": "",
-    "email": "",
-    "password": ""
+    "id": 7,
+    "name": "Robert Anderson",
+    "username": "randerson",
+    "password": "anderson789"
   },
   {
-    "id": null,
-    "name": "",
-    "email": "",
-    "password": ""
+    "id": 8,
+    "name": "Jessica Martinez",
+    "username": "jessicam",
+    "password": "martinez123"
   },
   {
-    "id": null,
-    "name": "",
-    "email": "",
-    "password": ""
+    "id": 9,
+    "name": "William Taylor",
+    "username": "wtaylor",
+    "password": "taylor456"
   },
   {
-    "id": null,
-    "name": "",
-    "email": "",
-    "password": ""
+    "id": 10,
+    "name": "Olivia Harris",
+    "username": "oliviah",
+    "password": "harris789"
   }
 ]

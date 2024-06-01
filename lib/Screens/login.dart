@@ -3,17 +3,18 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
-import 'package:social_app/Screens/categories.dart';
+
 import 'package:social_app/Screens/forgot_password.dart';
 import 'package:social_app/Screens/homeScreen.dart';
 
 import 'package:social_app/Screens/signup.dart';
-import 'package:social_app/Screens/splashScreen.dart';
+
 import 'package:social_app/models/sharedPrefService';
 
 import "dart:convert";
 
 import 'package:social_app/models/usermodel.dart';
+import 'package:uuid/uuid.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -36,6 +37,7 @@ class _LoginState extends State<Login> {
   TextEditingController _password = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   List<userModel> existingUsers = [];
+  Uuid uuid = Uuid();
   bool _showPass = true;
   List<String> dropDownItems = [
     "Course Categories",
@@ -88,10 +90,15 @@ class _LoginState extends State<Login> {
 
     final width = MediaQuery.sizeOf(context).width * 1;
 
+
     return Scaffold(
       backgroundColor: widget.isDark ? Colors.black : Colors.white,
       appBar: AppBar(
-        
+        flexibleSpace: Align(
+          alignment: Alignment.topRight,
+          child: TextButton(onPressed: (){
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> HomeScreen(UserName: uuid.v4().toString(), Pass: uuid.v4().toString(), isDark: isDark, isGuest: true, )));
+          }, child: SafeArea(child: Text('Continue as guest',style: TextStyle(color: widget.isDark ? Colors.white : Colors.purple),)))),
         iconTheme: IconThemeData(
           color: isDark ? Colors.white : Colors.black,
         ),
@@ -251,6 +258,7 @@ class _LoginState extends State<Login> {
                                             MaterialPageRoute(
                                                 builder: ((context) =>
                                                     HomeScreen(
+                                                      isGuest: false,
                                                       UserName: username,
                                                       Pass: password,
                                                       isDark: widget.isDark ,
@@ -340,7 +348,7 @@ class _LoginState extends State<Login> {
                                                     isDark: widget.isDark,
                                                   ))));
                                     },
-                                    child: Text("Forgot Password",
+                                    child: Text("Change Password",
                                         style: GoogleFonts.getFont('Roboto',
                                             textStyle: TextStyle(
                                               fontSize: 16,

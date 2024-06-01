@@ -12,10 +12,11 @@ class Friends extends StatefulWidget {
   final isDark;
   final currentUsername;
   final currentPassword;
+  final isGuest;
   const Friends({
     super.key,
     this.currentUsername,
-    this.currentPassword, this.isDark,
+    this.currentPassword, this.isDark, this.isGuest,
   });
 
   @override
@@ -101,7 +102,9 @@ class _FriendsState extends State<Friends> {
                       width: 10,
                     ),
                     IconButton(
+                      tooltip: 'Friend List',
                         onPressed: () {
+
                           Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -139,6 +142,7 @@ class _FriendsState extends State<Friends> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) => Showprofiles(
+                                            isGuest: widget.isGuest,
                                                 currentUsername:
                                                     widget.currentUsername,
                                                 currentPassword:

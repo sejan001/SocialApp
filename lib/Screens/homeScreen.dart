@@ -18,12 +18,12 @@ import 'package:social_app/models/usermodel.dart';
 class HomeScreen extends StatefulWidget {
   final String UserName;
   final String Pass;
-
+final isGuest;
   HomeScreen({
     Key? key,
     required this.UserName,
     required this.Pass,
-    required bool isDark,
+    required bool isDark, this.isGuest,
   }) : super(key: key);
 
   @override
@@ -87,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ? NetworkImage(
                                       "https://www.emoji.co.uk/files/phantom-open-emojis/travel-places-phantom/12735-night-with-stars.png")
                                   : NetworkImage(
-                                      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRarRBZpwj825CzL1v8JWKVQ78T0g1jvCga7xuTk7q3xsv1Dw-5nCxHAlACkiT2KDby5rI&usqp=CAU"),
+                                      "https://t3.ftcdn.net/jpg/02/50/08/68/360_F_250086872_srlXRqANYR2IbNfIylRDc3eMO9MinjnV.jpg"),
                               fit: BoxFit.cover),
                           color: isDark ? Colors.white : Colors.black),
                       child: Center(
@@ -195,7 +195,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                SharedPrefService.pref!.remove('username');
                                SharedPrefService.pref!.remove('password');
                     },
-                    child: Text(
+                    child: widget.isGuest ? Text(
+                      "Login",
+                      style: TextStyle(
+                          color: isDark ? Colors.black : Colors.green),
+                    ) : Text(
                       "Logout",
                       style: TextStyle(
                           color: isDark ? Colors.black : Colors.green),
@@ -249,20 +253,26 @@ class _HomeScreenState extends State<HomeScreen> {
           body: TabBarView(
             children: [
               ProfileTab(
+                isGuest: widget.isGuest,
                 isDark: isDark,
                 username: username,
                 password: password,
               ),
-              HomeTab(isDark: isDark,UserName : currentUser.username, Pass : currentUser.password),
+              HomeTab(isDark: isDark,UserName : currentUser.username, Pass : currentUser.password,isGuest: widget.isGuest,),
               MesssageScreen(
+                isGuest : widget.isGuest,
                 isDark: isDark,
                   currentUsername: currentUser.username,
                   currentPassword: currentUser.password),
               Friends(
+                isGuest : widget.isGuest,
                  isDark: isDark,
                   currentUsername: currentUser.username,
                   currentPassword: currentUser.password),
               NotificationTab(
+                
+
+            
                  isDark: isDark,
                   currentUsername: currentUser.username,
                   currentPassword: currentUser.password)

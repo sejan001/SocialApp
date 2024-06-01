@@ -12,11 +12,11 @@ class MesssageScreen extends StatefulWidget {
   final isDark;
   final currentUsername;
   final currentPassword;
-
+final isGuest;
   const MesssageScreen({
     Key? key,
     required this.currentUsername,
-    required this.currentPassword, this.isDark,
+    required this.currentPassword, this.isDark, this.isGuest,
   }) : super(key: key);
 
   @override
@@ -102,7 +102,9 @@ class _MesssageScreenState extends State<MesssageScreen> {
       backgroundColor: widget.isDark ? Colors.black : Colors.white,
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: groupedMessages.isEmpty ? Center(child: Text('No Messages'),): SafeArea(
+        child: groupedMessages.isEmpty ? Center(child: Text('No Messages',style: TextStyle(
+          color: widget.isDark ? Colors.white : Colors.black
+        ),),): SafeArea(
           child: Center(
             child: Column(
               children: [
